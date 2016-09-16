@@ -15,11 +15,19 @@ if ( ! function_exists( 'foundationpress_scripts' ) ) :
 	// Enqueue the main Stylesheet.
 	wp_enqueue_style( 'main-stylesheet', get_template_directory_uri() . '/assets/stylesheets/foundation.css', array(), '2.6.1', 'all' );
 
+	// Enqueue the slider stylesheet.
+	wp_enqueue_style( 'slick_css', get_template_directory_uri() . '/assets/components/slick/slick.css' );
+	wp_enqueue_style( 'slick-theme_css', get_template_directory_uri() . '/assets/components/slick/slick-theme.css' );
+
+
+
 	// Deregister the jquery version bundled with WordPress.
 	wp_deregister_script( 'jquery' );
 
 	// CDN hosted jQuery placed in the header, as some plugins require that jQuery is loaded in the header.
 	wp_enqueue_script( 'jquery', '//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js', array(), '2.1.0', false );
+
+	wp_enqueue_script( 'slick_js', get_template_directory_uri() . '/assets/components/slick/slick.min.js', array('jquery'), '', true );
 
 	// If you'd like to cherry-pick the foundation components you need in your project, head over to gulpfile.js and see lines 35-54.
 	// It's a good idea to do this, performance-wise. No need to load everything if you're just going to use the grid anyway, you know :)

@@ -41,5 +41,18 @@
 
 <?php wp_footer(); ?>
 <?php do_action( 'foundationpress_before_closing_body' ); ?>
+<?php if ( is_front_page() ) { ?>
+	<script>
+	jQuery(document).ready(function($) {
+
+	    //Slick Slider
+	    $('.slider').slick({
+	        autoplay: true,
+	        arrows: false, //Set these to whatever you need
+	    });
+
+	});
+	</script>	
+<?php }; ?>
 </body>
 </html>

@@ -47,5 +47,8 @@ require_once( 'library/sticky-posts.php' );
 /** Configure responsive image sizes */
 require_once( 'library/responsive-images.php' );
 
+/** Swish Custom Functions */
+include_once( get_stylesheet_directory() . '/library/custom-functions.php' );
+
 /** If your site requires protocol relative url's for theme assets, uncomment the line below */
 // require_once( 'library/protocol-relative-theme-assets.php' );

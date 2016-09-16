@@ -1,8 +1,18 @@
 // Page header
 #front-hero {
-	.marketing {
+	.greeter {
 		@include grid-row();
-		max-width: 55rem;
+
+		.tagline,
+		.signup{
+			@include breakpoint(small) {
+				@include grid-column(12);
+			}
+
+			@include breakpoint(medium) {
+				@include grid-column(6);
+			}
+		}
 	}
 
 	@include breakpoint(small) {
@@ -144,20 +154,9 @@
 	}
 }
 
-// Section divider
-.section-divider {
-	@include grid-row();
 
-	hr {
-		@include grid-column(12);
-		@extend .dotted;
-		box-sizing: border-box;
-	}
-}
-
-
-// Benefits
-.benefits {
+// highlights
+.highlights {
 	@include grid-row();
 	text-align: center;
 
@@ -175,10 +174,7 @@
 		}
 	}
 
-	.semantic,
-	.responsive,
-	.customizable,
-	.professional {
+	.highlight{
 		@include breakpoint(small) {
 			@include grid-column(12);
 		}
@@ -208,4 +204,85 @@
 		margin-top: 4rem;
 	}
 
+}
+
+// courses
+.courses {
+	@include grid-row();
+	text-align: left;
+
+}
+
+// Skills
+.skills {
+	@include grid-row();
+	text-align: center;
+
+	header {
+		@include grid-column(12);
+
+		h2 {
+			font-weight: 300;
+		}
+
+		h4 {
+			font-size: 1.125rem;
+			line-height: 1.6;
+			color: #777;
+		}
+	}
+
+	.skill {
+		@include breakpoint(small) {
+			@include grid-column(12);
+		}
+
+		@include breakpoint(medium) {
+			@include grid-column(3);
+		}
+
+		img {
+			padding: 1.25rem;
+    	margin: 1rem auto 0 auto;
+		}
+
+		h3 {
+			color: #0a0a0a;
+			font-weight: 300;
+			font-size: 1.75rem;
+		}
+
+		p { font-size: 0.9375rem; }
+
+	}
+
+
+}
+
+// Testimonial/Video
+.testimonial-video {
+	.leaver {
+		@include grid-row();
+
+		.slider,
+		.video {
+			@include breakpoint(small) {
+				@include grid-column(12);
+			}
+
+			@include breakpoint(medium) {
+				@include grid-column(6);
+			}
+
+
+		}
+
+
+	}
+
+
+}
+
+.not-first-slide{
+	display: none;
 }
