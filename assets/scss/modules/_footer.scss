@@ -14,5 +14,22 @@
 			margin: 0;
 			padding: 0;
 		}
+		.newsletter,
+		.left,
+		.right {
+			@include breakpoint(small) {
+				@include grid-column(12);
+			}
+
+			@include breakpoint(medium) {
+				@include grid-column(3);
+			}
+
+		}
+		.left{
+			@include breakpoint(medium) {
+				@include grid-column-offset(3);
+			}			
+		}
 	}
 }

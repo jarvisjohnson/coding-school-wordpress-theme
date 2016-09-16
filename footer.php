@@ -15,6 +15,17 @@
 			<footer id="footer">
 				<?php do_action( 'foundationpress_before_footer' ); ?>
 				<?php dynamic_sidebar( 'footer-widgets' ); ?>
+					<div class="newsletter">
+						<?php echo do_shortcode('[contact-form-7 id="106" title="Footer Signup"]') ?>
+					</div>
+
+					<div class="left">
+						<?php foundationpress_footer_nav_left(); ?>
+					</div>
+
+					<div class="right">
+						<?php foundationpress_footer_nav_right(); ?>
+					</div>
 				<?php do_action( 'foundationpress_after_footer' ); ?>
 			</footer>
 		</div>

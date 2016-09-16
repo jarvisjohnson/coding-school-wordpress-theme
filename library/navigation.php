@@ -9,6 +9,8 @@
 
 register_nav_menus(array(
 	'top-bar-r'  => 'Right Top Bar',
+	'footer-r'  => 'Right Footer',
+	'footer-l'  => 'Left Footer',
 	'mobile-nav' => 'Mobile',
 ));
 
@@ -50,6 +52,37 @@ if ( ! function_exists( 'foundationpress_mobile_nav' ) ) {
 	}
 }
 
+/**
+ * footer navigation - left
+ */
+if ( ! function_exists( 'foundationpress_footer_nav_left' ) ) {
+	function foundationpress_footer_nav_left() {
+		wp_nav_menu( array(
+			'container'      => false,
+			'menu_class'     => 'vertical menu',
+			'items_wrap'     => '<article id="%1$s" class="large-4 columns"><ul>%3$s</ul></article>',
+			'theme_location' => 'footer-l',
+			'fallback_cb'    => false,
+			'walker'         => new Foundationpress_Footer_Walker(),
+		));
+	}
+}
+
+/**
+ * footer navigation - right
+ */
+if ( ! function_exists( 'foundationpress_footer_nav_right' ) ) {
+	function foundationpress_footer_nav_right() {
+		wp_nav_menu( array(
+			'container'      => false,
+			'menu_class'     => 'vertical menu',
+			'items_wrap'     => '<article id="%1$s" class="large-4 columns"><ul>%3$s</ul></article>',
+			'theme_location' => 'footer-r',
+			'fallback_cb'    => false,
+			'walker'         => new Foundationpress_Footer_Walker(),
+		));
+	}
+}
 
 /**
  * Add support for buttons in the top-bar menu:
