@@ -49,6 +49,68 @@ function wpt_register_theme_customizer( $wp_customize ) {
 		)
 	);
 
+	// Create custom panels
+	$wp_customize->add_panel( 'footer_settings', array(
+	  'priority' => 1000,
+	  'theme_supports' => '',
+	  'title' => __( 'Footer Settings', 'foundationpress' ),
+	  'description' => __( 'Controls footer text', 'foundationpress' ),
+	) );
+
+	// Create custom field for mobile navigation layout
+	$wp_customize->add_section( 'footer_left_text' , array(
+		'title'	=> __('Footer left text','foundationpress'),
+		'panel' => 'footer_settings',
+		'priority' => 1000,
+	));
+
+		// Create custom field for mobile navigation layout
+	$wp_customize->add_section( 'footer_right_text' , array(
+		'title'	=> __('Footer right text','foundationpress'),
+		'panel' => 'footer_settings',
+		'priority' => 1000,
+	));
+
+	// Set default navigation layout
+	$wp_customize->add_setting(
+		'wpt_footer_left_text',
+		array(
+			'default'	=> __( '', 'foundationpress' ),
+		)
+	);
+	$wp_customize->add_setting(
+		'wpt_footer_right_text',
+		array(
+			'default'	=> __( '', 'foundationpress' ),
+		)
+	);	
+
+	// Add options for navigation layout
+	$wp_customize->add_control(
+		new WP_Customize_Control(
+			$wp_customize,
+			'footer_left_text',
+			array(
+				'type'		=> 'text',
+				'section' 	=> 'footer_left_text',
+				'settings' 	=> 'wpt_footer_left_text',
+			)		
+		)
+	);	
+
+	// Add options for navigation layout
+	$wp_customize->add_control(
+		new WP_Customize_Control(
+			$wp_customize,
+			'footer_right_text',
+			array(
+				'type'		=> 'text',
+				'section' 	=> 'footer_right_text',
+				'settings' 	=> 'wpt_footer_right_text',
+			)		
+		)
+	);	
+
 }
 
 add_action( 'customize_register', 'wpt_register_theme_customizer' );

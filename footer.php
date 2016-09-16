@@ -20,10 +20,12 @@
 					</div>
 
 					<div class="left">
+						<h3><?php echo get_theme_mod( 'wpt_footer_left_text' , 'Left Footer Menu' ); ?></h3>
 						<?php foundationpress_footer_nav_left(); ?>
 					</div>
 
 					<div class="right">
+						<h3><?php echo get_theme_mod( 'wpt_footer_right_text' , 'Right Footer Menu' ); ?></h3>
 						<?php foundationpress_footer_nav_right(); ?>
 					</div>
 				<?php do_action( 'foundationpress_after_footer' ); ?>
@@ -46,7 +48,7 @@
 	jQuery(document).ready(function($) {
 
 	    //Slick Slider
-	    $('.slider').slick({
+	    $('.slidez').slick({
 	        autoplay: true,
 	        arrows: false, //Set these to whatever you need
 	    });

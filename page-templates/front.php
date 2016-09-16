@@ -124,7 +124,7 @@ get_header(); ?>
 			if($rows)
 			{
 				$first = true;
-				echo '<div class="slider">';
+				echo '<div class="slidez" style="background-image: url(' . get_template_directory_uri() . '/assets/images/global/quote-icon.svg">';
 
 				foreach($rows as $row)
 				{
@@ -134,7 +134,7 @@ get_header(); ?>
 				      $first = false;
 				      $classy = '';
 				    }
-					echo '<div class="slide ' . $classy . '"><blockquote class="cite">' . $row['testimonial_texts'] . '</blockquote><p>' . $row['testimonial_names'] .'</p></div>';
+					echo '<div class="slide ' . $classy . '"><blockquote class="cite">' . $row['testimonial_texts'] . '</blockquote><p class="text-right">- ' . $row['testimonial_names'] .'</p></div>';
 				}
 				echo '</div>';
 		 	}
@@ -142,7 +142,10 @@ get_header(); ?>
 
 	    <div class="video">
 		   <?php the_field('video'); ?>
-		   <p><?php the_field('video_description'); ?></p>
+		   <p>
+			<strong><?php the_field('video_presenter'); ?></strong>
+			<span> <?php the_field('video_presenter_title'); ?></span>
+		   </p>
 	    </div>
     </div>
 
