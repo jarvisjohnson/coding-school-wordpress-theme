@@ -1,11 +1,16 @@
 /* Navigation breakpoints */
 
 .desktop-menu, .top-bar-left {
-  @include show-for(medium);
+  display: none;
 }
 
 #mobile-menu, .title-bar {
-  @include hide-for(medium);
+  // @include show-for(medium);
+}
+
+.title-bar {
+  background: $white;
+  color: $main-blue;
 }
 
 /* Mobile menu */
