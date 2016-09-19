@@ -16,9 +16,25 @@
 				<?php do_action( 'foundationpress_before_footer' ); ?>
 				<?php dynamic_sidebar( 'footer-widgets' ); ?>
 					<div class="newsletter">
+						<p class="">
+							<?php the_field('footer_text', 'option'); ?>
+						</p>
+						<div class="footer-details__social-icons">
+							<a href="<?php the_field('facebook', 'option'); ?>" class="icon">
+								<i class="fa fa-facebook"></i>
+							</a>
+							<a href="<?php the_field('twitter', 'option'); ?>" class="icon">
+								<i class="fa fa-facebook"></i>
+							</a>
+							<a href="<?php the_field('google_plus', 'option'); ?>" class="icon">
+								<i class="fa fa-facebook"></i>
+							</a>
+							<a href="<?php the_field('linkedin', 'option'); ?>" class="icon">
+								<i class="fa fa-facebook"></i>
+							</a>
+						</div>
 						<?php echo do_shortcode('[contact-form-7 id="106" title="Footer Signup"]') ?>
 					</div>
-
 					<div class="left">
 						<h3><?php echo get_theme_mod( 'wpt_footer_left_text' , 'Left Footer Menu' ); ?></h3>
 						<?php foundationpress_footer_nav_left(); ?>
@@ -56,5 +72,8 @@
 	});
 	</script>	
 <?php }; ?>
+  <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0sUqymNDz0cX3iNniU1LziNjBcVaFuRU&callback=initMap">
+    </script>
 </body>
 </html>

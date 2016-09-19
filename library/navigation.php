@@ -60,7 +60,7 @@ if ( ! function_exists( 'foundationpress_footer_nav_left' ) ) {
 		wp_nav_menu( array(
 			'container'      => false,
 			'menu_class'     => 'vertical menu',
-			'items_wrap'     => '<article id="%1$s" class=""><ul>%3$s</ul></article>',
+			'items_wrap'     => '<div id="%1$s" class=""><ul>%3$s</ul></div>',
 			'theme_location' => 'footer-l',
 			'fallback_cb'    => false,
 			'walker'         => new Foundationpress_Footer_Walker(),
@@ -76,7 +76,7 @@ if ( ! function_exists( 'foundationpress_footer_nav_right' ) ) {
 		wp_nav_menu( array(
 			'container'      => false,
 			'menu_class'     => 'vertical menu',
-			'items_wrap'     => '<article id="%1$s" class=""><ul>%3$s</ul></article>',
+			'items_wrap'     => '<div id="%1$s" class=""><ul>%3$s</ul></div>',
 			'theme_location' => 'footer-r',
 			'fallback_cb'    => false,
 			'walker'         => new Foundationpress_Footer_Walker(),

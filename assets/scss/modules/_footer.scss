@@ -2,19 +2,16 @@
 	max-width: 100%;
 	width: 100%;
 	margin: 0 auto;
-	border-top: 1px solid #ccc;
-	margin-top: rem-calc(60);
-
+	background-color: $footer-blue;
 	#footer {
 		@include grid-row();
 		padding: rem-calc(30) 0;
-
+		color: $white;
 		ul {
 			list-style-type: none;
 			margin: 0;
 			padding: 0;
 		}
-		.newsletter,
 		.left,
 		.right {
 			@include breakpoint(small) {
@@ -24,12 +21,33 @@
 			@include breakpoint(medium) {
 				@include grid-column(3);
 			}
-
+			ul li{
+				@include underline();
+				font-family: Droid Sans Mono, monospace;
+			}
 		}
 		.left{
 			@include breakpoint(medium) {
-				@include grid-column-offset(3);
+				@include grid-column-offset(1);
 			}			
+		}
+		.newsletter{
+			@include breakpoint(small) {
+				@include grid-column(12);
+			}
+			@include breakpoint(medium) {
+				@include grid-column(5);
+			}			
+			input[type="text"], input[type="email"]{
+				@include foundation-form-text;
+			}
+			input[type="submit"]{
+				@include button();
+			}
+			  .ajax-loader{
+			    position: relative;
+			    top: -5px;
+			  }						
 		}
 	}
 }

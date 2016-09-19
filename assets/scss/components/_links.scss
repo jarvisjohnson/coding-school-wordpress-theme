@@ -6,3 +6,15 @@
 [data-whatinput="touch"] a:focus, button:focus {
   outline: none;
 }
+
+@mixin link-color($baseColor){
+    color: $baseColor;
+    &:hover{
+        color: darken($baseColor, 5%)
+    }
+}
+
+a{
+	@include link-color($white);
+	color: inherit;
+}

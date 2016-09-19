@@ -47,6 +47,26 @@ require_once( 'library/sticky-posts.php' );
 /** Configure responsive image sizes */
 require_once( 'library/responsive-images.php' );
 
+/*** 
+ACF
+***/
+
+/**ACF GOOGLE MAPS APIS KEYS**/
+function my_acf_init() {
+	
+	acf_update_setting('google_api_key', 'AIzaSyA0sUqymNDz0cX3iNniU1LziNjBcVaFuRU');
+}
+
+add_action('acf/init', 'my_acf_init');
+
+
+//**Add ACF Options page
+if( function_exists('acf_add_options_page') ) {
+	
+	acf_add_options_page();
+	
+}
+
 /** Swish Custom Functions */
 include_once( get_stylesheet_directory() . '/library/custom-functions.php' );
 

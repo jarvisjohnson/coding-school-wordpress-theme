@@ -11,14 +11,47 @@
 .title-bar {
   background: $white;
   color: $main-blue;
+  position: relative;
+  text-align: center;
+  .menu-icon{
+    display: inline;
+    cursor: pointer;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 1.3rem;
+    left: 1rem;
+  }
+}
+
+.title-bar-title {
+  @include grid-row();
+  text-align: center;
+}
+
+.menu-icon:after{
+  display: none;
+}
+
+.fa{
+  font-size: 2rem;
 }
 
 /* Mobile menu */
 
+.off-canvas-wrapper, .off-canvas{
+  background-color: $footer-blue;
+}
+
 .off-canvas {
  > ul.menu {
     height: 100vh;
-    padding: 1rem;
+    li a{
+      padding: 1rem;
+    }
+  }
+  .upper{
+    padding: 1rem;    
   }
 }
 
@@ -113,4 +146,7 @@
 }
 .nav-next {
 	float:right;
+}
+.js-off-canvas-exit{
+  background: rgba(0,0,0,.25);
 }

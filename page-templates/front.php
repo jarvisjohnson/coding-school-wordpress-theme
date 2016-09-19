@@ -11,7 +11,7 @@ get_header(); ?>
 			<p class="subheader"><?php the_field('call_to_action_description'); ?></p>
 		</div>
 		<div class="signup">
-			<h2>Stay Connected With Us</h2>
+			<h5 class="collapse">Stay Connected With Us</h5>
 			<div>
 				<?php echo do_shortcode('[contact-form-7 id="158" title="Stay connected with us"]') ?>
 			</div>
@@ -23,7 +23,7 @@ get_header(); ?>
 <?php do_action( 'foundationpress_before_content' ); ?>
 
 
-<section class="highlights">
+<article class="highlights">
 	<header>
 		<h2><?php the_field('highlights_title'); ?></h2>
 	</header>
@@ -31,29 +31,34 @@ get_header(); ?>
         if( have_rows('highlights') ):
             while ( have_rows('highlights') ) : the_row(); ?>
         		<div class="highlight">
-	                <a href="<?php the_sub_field('highlight_link'); ?>">
-	                  <p><?php the_sub_field('highlight_text'); ?></p>
-	                </a>
+	                <button href="<?php the_sub_field('highlight_link'); ?>">
+	                  <?php the_sub_field('highlight_text'); ?>
+	                </button>
                 </div>
             <?php endwhile;
         else :
         endif;
       ?>
 
-</section>
+</article>
 
 
-<section class="courses">
+<article class="courses">
+
+	<div class="inner">
 
 	<?php
 	   if( have_rows('upcoming_courses') ): ?>
 		<table>
 		  <thead>
-		    <tr>
-		      <th width="200">Icon</th>
+		    <tr class="border">
+		      <th width="200" class="icon">
+		      	<i class="fa fa-calendar-o" />
+		      </th>
 		      <th>Upcoming Courses</th>
 		      <th></th>
 		    </tr>
+		    <tr height="1px" bgcolor="black"></tr>
 		  </thead>
 		  <tbody>
 		   <?php while ( have_rows('upcoming_courses') ) : the_row(); ?>
@@ -68,18 +73,28 @@ get_header(); ?>
 		          setup_postdata( $post ); 
 
 		          ?>
-				    <tr>
-				      <td>
+
+		          <?php $date = get_field('course_date');
+					$date2 = date("F j Y", strtotime($date)); 
+					$location = get_field('course_location'); ?>
+
+				    <tr class="border">
+				      <td class="icon">
 				      	<img src="<?php the_field('course_icon') ?>">
 				      </td>
 				      <td>
-				      	<h2 class="upcoming-courses__title"><?php the_title() ?></h2>
-			          	<span class="upcoming-courses__cost">$<?php the_field('course_cost') ?></span>
+				      	<h3 class="upcoming-courses__title"><?php the_title() ?></h2>
+				      	<h6>
+					      	<span><?php echo $date2; ?> - </span><span><?php the_field('course_duration') ?> weeks</span><br>
+					      	<span><?php echo $location['address']; ?></span><br>
+				          	<span>$<?php the_field('course_cost') ?></span>
+			          	</h6>
 				      </td>
-				      <td>
+				      <td class="course-button">
 				      	<a href="<?php echo esc_url( get_permalink() ); ?>" class="upcoming-courses__learn-more">Learn More</a>
 				      </td>
 				    </tr>
+				   	<tr height="1px"></tr>
 			        <?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
 		        <?php endif; ?>
 	    	<?php endwhile; ?>
@@ -88,10 +103,11 @@ get_header(); ?>
 	<?php else :
 	endif;
 	?> 
+	</div>
 
-</section>
+</article>
 
-<section class="skills">
+<article class="skills">
 	<header>
 		<h2><?php the_field('awesome_skills_title'); ?></h2>
 		<h4><?php the_field('awesome_skills_description'); ?></h4>
@@ -112,10 +128,10 @@ get_header(); ?>
     endif;
     ?>
 
-</section>
+</article>
 
 
-<section class="testimonial-video">
+<article class="testimonial-video">
 	<div class="leaver">
 
 		<?php
@@ -149,7 +165,7 @@ get_header(); ?>
 	    </div>
     </div>
 
-</section>
+</article>
 
 
 

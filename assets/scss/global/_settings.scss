@@ -55,7 +55,7 @@ $foundation-palette: (
   warning: #ffae00,
   alert: #ec5840,
 );
-$light-gray: #e6e6e6;
+$light-gray: #e2e2e2;
 $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
 $black: #0a0a0a;
@@ -63,6 +63,10 @@ $white: #fefefe;
 // SVCS Colours
 $main-blue: #03A9f4;
 $dark-blue: #0288d1;
+$light-blue: #9DDBF1;
+$lightest-blue: #F1F5FA;
+$footer-blue: #657b90;
+// end SVCS Colours
 $body-background: $white;
 $body-font-color: $black;
 $body-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
@@ -71,7 +75,7 @@ $global-margin: 1rem;
 $global-padding: 1rem;
 $global-weight-normal: normal;
 $global-weight-bold: bold;
-$global-radius: 0;
+$global-radius: 3px;
 $global-text-direction: ltr;
 $global-flexbox: false;
 $print-transparent-backgrounds: true;

@@ -29,7 +29,9 @@
 
 	<header id="masthead" class="site-header" role="banner">
 		<div class="title-bar" data-responsive-toggle="site-navigation" style="display:block!important;">
-			<button class="menu-icon" type="button" data-toggle="mobile-menu"></button>
+			<icon class="menu-icon left" type="button" data-toggle="mobile-menu">
+				<i class="fa fa-bars"></i>
+			</icon>
 			<div class="title-bar-title">
 				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
 

@@ -32,3 +32,4 @@ function custom_admin_head() {
   echo '<style type="text/css">'.$css.'</style>';
 }
 add_action('admin_head', 'custom_admin_head');
+
