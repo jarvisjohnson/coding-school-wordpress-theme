@@ -1,4 +1,7 @@
 #footer-container {
+	#footer *:not(input){
+		color: $white !important;
+	}
 	max-width: 100%;
 	width: 100%;
 	margin: 0 auto;
@@ -23,7 +26,11 @@
 			}
 			ul li{
 				@include underline();
+				border-color: $lightish-gray;
 				font-family: Droid Sans Mono, monospace;
+			}
+			h5{
+				text-transform: uppercase;
 			}
 		}
 		.left{
@@ -39,7 +46,7 @@
 				@include grid-column(5);
 			}			
 			input[type="text"], input[type="email"]{
-				@include foundation-form-text;
+				//@include foundation-form-text;
 			}
 			input[type="submit"]{
 				@include button();
@@ -48,6 +55,22 @@
 			    position: relative;
 			    top: -5px;
 			  }						
+		}
+		.social-icons{
+			margin: 15px 0;
+			.fa {
+				font-size: 1rem;
+    			padding: 5px 9px;
+			}
+			a{
+				background-color: $lightish-gray;
+				display: inline-block;
+				margin-right: 5px;
+				transition: $transition;
+			}
+			a:hover{
+				box-shadow: inset 0 0 .5px .5px $medium-gray;
+			}
 		}
 	}
 }

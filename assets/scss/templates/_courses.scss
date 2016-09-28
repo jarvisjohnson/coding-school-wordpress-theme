@@ -1,0 +1,71 @@
+//Courses Index Page
+	//Switcher Method
+.product_cat-online{
+	display: block;
+}
+.product_cat-on-campus{
+	display: none;
+}
+.product_cat-online.no-display{
+	display: none;
+}
+.product_cat-on-campus.display{
+	display: block;
+}
+	//Switcher
+.switcher {
+	position: relative;
+	margin: 0 auto;
+	text-align: center;	
+	top:-1.5em;
+	.switch{
+		background: $main-blue;
+		display: inline-block;
+		border: 3px solid $main-blue;
+		overflow: hidden;
+		@include shadow();
+		@include radius($large-radius);
+		a{
+			margin:0!important;
+			width: 250px;
+			border-radius: 0!important;
+			display: inline-block;
+			border: 0!important;
+			@include button($background:$white,$color:$main-blue,$background-hover:$light-blue);
+				&:after, &:before{
+					content: '\f070';
+				   font-family: FontAwesome;
+				   font-weight: normal;
+				   font-style: normal;
+				   margin:0px 0px 0px 10px;
+				   text-decoration:none;
+				   opacity: 0;
+				}
+				&:after{
+					opacity: 1;
+				}				
+			&.active{
+				@include button();
+				&:after{content: '\f06e';}
+
+			}	
+
+		}
+		margin:0;
+	}
+}
+
+//Header
+#featured-hero{
+	margin: 0;
+}
+
+//Each Course - Index
+.eb_join_button, .wdm-btn{
+	@include button-arrow();
+	background-color: $main-blue!important;
+	border: 0!important;
+	&:hover{
+  		background: $button-background-hover!important,
+	} 
+}

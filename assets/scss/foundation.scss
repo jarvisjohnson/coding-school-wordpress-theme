@@ -76,7 +76,7 @@
 */
 
 // Modules
-@import "modules/setting-overrides";
+@import "modules/custom-mixins-helpers";
 @import "modules/navigation";
 @import "modules/footer";
 @import "modules/sidebar";
@@ -95,3 +95,7 @@
 @import "templates/page-sidebar-left";
 @import "templates/page-full-width";
 @import "templates/single-post";
+@import "templates/courses";
+
+// Custom Styles
+@import "modules/setting-overrides";

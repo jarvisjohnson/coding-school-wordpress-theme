@@ -55,20 +55,24 @@ $foundation-palette: (
   warning: #ffae00,
   alert: #ec5840,
 );
-$light-gray: #e2e2e2;
-$medium-gray: #cacaca;
-$dark-gray: #8a8a8a;
+$lightest-gray: #f0f0f0;
+$lighter-gray: #e0e0e0;
+$light-gray: #DCDCDC;
+$lightish-gray: #b3b3b3;
+$medium-gray: #7a7a7a;
+$dark-gray: #666666;
 $black: #0a0a0a;
 $white: #fefefe;
 // SVCS Colours
-$main-blue: #03A9f4;
+$main-blue: #2199e8;
 $dark-blue: #0288d1;
 $light-blue: #9DDBF1;
 $lightest-blue: #F1F5FA;
 $footer-blue: #657b90;
+$footer-blue-hover: #466E87;
 // end SVCS Colours
-$body-background: $white;
-$body-font-color: $black;
+$body-background: $lightest-blue;
+$body-font-color: $dark-gray;
 $body-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 $body-antialiased: true;
 $global-margin: 1rem;

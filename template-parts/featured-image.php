@@ -3,8 +3,11 @@
 	if ( has_post_thumbnail( $post->ID ) ) :
 		$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
 		$image = $image[0];
-		?>
+	else :
+		$image = get_field('courses_header_image', 17);
+	endif; ?>
 
 	<header id="featured-hero" role="banner" style="background-image: url('<?php echo $image ?>')">
+		<h1 class="page-title"><?php the_title(); ?></h1>
 	</header>
-	<?php endif;
+

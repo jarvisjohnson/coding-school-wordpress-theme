@@ -8,9 +8,9 @@
 }
 
 @mixin link-color($baseColor){
-    color: $baseColor;
+    color: $medium-gray;
     &:hover{
-        color: darken($baseColor, 5%)
+        color: darken($light-gray, 30%)
     }
 }
 

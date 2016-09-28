@@ -16,10 +16,10 @@
 			</button>
 		</form>
 		 <?php if ( is_user_logged_in() ) { ?>
-		 	<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title="<?php _e('My Account','woothemes'); ?>"><?php _e('My Account','woothemes'); ?></a>
+		 	<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title="<?php _e('My Account','woothemes'); ?>"><i class="fa fa-user"></i></a>
 		 <?php } 
 		 else { ?>
-		 	<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title="<?php _e('Login / Register','woothemes'); ?>"><?php _e('Login / Register','woothemes'); ?></a>
+		 	<a href="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>" title="<?php _e('Login / Register','woothemes'); ?>"><i class="fa fa-user"></i></a>
 		 <?php } ?>
 	 </div>
   <?php foundationpress_mobile_nav(); ?>

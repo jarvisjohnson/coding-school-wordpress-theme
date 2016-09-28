@@ -5,13 +5,35 @@
  * @package FoundationPress
  * @since FoundationPress 1.0.0
  */
-
 get_header(); ?>
 
-<div class="row">
-	<div class="small-12 large-8 columns" role="main">
+        <?php 
+
+        $image = get_field('courses_header_image', 17); ?>
+
+            <header id="featured-hero" role="banner" style="background-image: url('<?php echo $image ?>')">
+                <h1 class="page-title">Courses</h1>
+            </header>
+            <div class="switcher">
+                <div class="switch">
+                    <a id="online-courses" class="active">
+                        <span>Online Courses</span>
+                   </a>
+                    <a id="campus-courses">
+                        <span>On Campus Courses</span>
+                   </a>             
+                </div>                 
+            </div>
+
+ <div id="page" role="main">
+
+    <?php do_action( 'foundationpress_before_content' ); ?>
 
 	<?php do_action( 'foundationpress_before_content' ); ?>
+
+	<article class="shop-header">
+		
+	</article>
 
 	<?php while ( woocommerce_content() ) : the_post(); ?>
 		<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
@@ -34,7 +56,10 @@ get_header(); ?>
 
 	<?php do_action( 'foundationpress_after_content' ); ?>
 
-	</div>
-	<?php get_sidebar(); ?>
 </div>
+
+
+  <?php get_template_part( 'template-parts/switcher' ); ?>
+
+
 <?php get_footer();

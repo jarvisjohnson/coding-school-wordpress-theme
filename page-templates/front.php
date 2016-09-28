@@ -83,7 +83,7 @@ get_header(); ?>
 				      	<img src="<?php the_field('course_icon') ?>">
 				      </td>
 				      <td>
-				      	<h3 class="upcoming-courses__title"><?php the_title() ?></h2>
+				      	<h4 class="title"><?php the_title() ?></h4>
 				      	<h6>
 					      	<span><?php echo $date2; ?> - </span><span><?php the_field('course_duration') ?> weeks</span><br>
 					      	<span><?php echo $location['address']; ?></span><br>

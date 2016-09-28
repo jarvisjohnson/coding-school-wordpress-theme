@@ -1,3 +1,7 @@
+body.home, .home .off-canvas-content {
+    background: $white;  
+}
+
 // Page header
 #front-hero {
 	background: $main-blue;
@@ -19,15 +23,24 @@
 		}
 		.signup{
 			@include radius();
+			@include shadow();
 			background: $white;
+			overflow: hidden;
 			@include foundation-forms();
 			h5{
 			margin-left: -0.9375rem;
  	          margin-right: -0.9375rem;
  	          text-align: center;
+ 	          background: $footer-blue;
+ 	          padding: 10px;
+ 	          color: $white;
+ 	          margin-bottom: 1rem;
 			}
 			input[type="text"], input[type="email"]{
 				@include foundation-form-text;
+			}
+			input[type="*"]{
+				@include no-box();
 			}
 			input[type="submit"]{
 				@include button();
@@ -63,7 +76,6 @@
 
 	h1 {
 		color: #fff;
-		font-weight: 500;
 
 		@include breakpoint(small) {
 			font-size: 2.2rem;
@@ -126,21 +138,17 @@
 
 	header {
 		@include grid-column(12);
-
-		h2 {
-			font-weight: 300;
-		}
-
 		h4 {
 			font-size: 1.125rem;
 			line-height: 1.6;
 			color: #777;
+			font-weight: 300;
 		}
 	}
 
 	.highlight{
-	
-		@include breakpoint(small-down) {
+
+		@include breakpoint(small) {
 			@include grid-column(12);
 			&:before{
 				margin-top: 100%;
@@ -168,6 +176,7 @@
 		button {
 			@include button-light();
 			@include radius();
+			@include shadow();			
 		    position: absolute;
 		    top: 0;
 		    bottom: 0;
@@ -212,10 +221,13 @@
 		    border-collapse: separate;
 		    border-spacing: 0;
 			@include radius();
+			@include shadow();
 			overflow: hidden;
-			background: $dark-gray;
+			background: $medium-gray;
 			border: $border;
-			
+			thead{
+				font-weight: 900;
+			}
 			thead, tbody .border:not:last-of-type{
 				border-bottom: $border;
 			}
@@ -225,6 +237,9 @@
 			.course-button{
 				text-align: right;
 				padding-right: 30px;
+			}
+			.title{
+				text-transform: uppercase;
 			}
 		}
 
@@ -239,10 +254,6 @@
 
 	header {
 		@include grid-column(12);
-
-		h2 {
-			font-weight: 300;
-		}
 
 		h4 {
 			font-size: 1.125rem;
