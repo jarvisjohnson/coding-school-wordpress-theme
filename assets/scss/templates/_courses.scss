@@ -55,15 +55,27 @@
 	}
 }
 
-//Header
+//Image Header
 #featured-hero{
 	margin: 0;
+	.wrap{
+		@include grid-row();
+	}
+}
+
+//Text Header
+.online-on-campus{
+	background: $white;
+	header{
+		@include grid-row();
+	}
 }
 
 //Each Course - Index
-.eb_join_button, .wdm-btn{
+.add_to_cart_button{
 	@include button-arrow();
 	background-color: $main-blue!important;
+	color: $white!important;
 	border: 0!important;
 	&:hover{
   		background: $button-background-hover!important,
