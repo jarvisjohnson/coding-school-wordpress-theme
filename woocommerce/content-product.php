@@ -27,7 +27,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
 ?>
-<li <?php post_class(); ?>>
+<div <?php post_class(); ?>>
 	<?php
 	/**
 	 * woocommerce_before_shop_loop_item hook.
@@ -49,8 +49,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 *
 	 * @hooked woocommerce_template_loop_product_title - 10
 	 */
-	do_action( 'woocommerce_shop_loop_item_title' );
-
+	do_action( 'woocommerce_shop_loop_item_title' );		
 	/**
 	 * woocommerce_after_shop_loop_item_title hook.
 	 *
@@ -59,12 +58,53 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 */
 	do_action( 'woocommerce_after_shop_loop_item_title' );
 
-	/**
-	 * woocommerce_after_shop_loop_item hook.
-	 *
-	 * @hooked woocommerce_template_loop_product_link_close - 5
-	 * @hooked woocommerce_template_loop_add_to_cart - 10
-	 */
-	do_action( 'woocommerce_after_shop_loop_item' );
+
 	?>
-</li>
+<!-- Customisation -->
+	<div class="details">
+	   <p>
+		<span class="part">
+			<strong>Date</strong>
+			<span> <?php the_field('video_presenter_title'); ?>Text</span>
+		</span>	
+		<span class="part">
+			<strong>Duration</strong>
+			<span> <?php the_field('video_presenter_title'); ?>Text</span>
+		</span>	
+		<span class="part">
+			<strong>Cost</strong>
+			<span><?php echo $product->get_price_html(); ?></span>
+		</span>					
+	   </p>
+	</div>
+	<div class="short">
+		<?php the_excerpt() ?>
+	</div>
+	<div class="skills-buy">
+		<div class="left">
+	        <?php
+	        if( have_rows('key_skills') ):
+	            while ( have_rows('key_skills') ) : the_row(); ?>
+	                <div class="skill">
+	                  <img src="<?php the_sub_field('key_skill_image'); ?>">
+	                </div>
+	            <?php endwhile;
+	        else :
+	        endif;
+	        ?>
+		</div>
+		<div class="right">
+			<?php	
+			/**
+			 * woocommerce_after_shop_loop_item hook.
+			 *
+			 * @hooked woocommerce_template_loop_product_link_close - 5
+			 * @hooked woocommerce_template_loop_add_to_cart - 10
+			 */
+			do_action( 'woocommerce_after_shop_loop_item' );	
+			?>
+		</div>
+	</div>	
+<!-- // Customisation -->
+
+</div>

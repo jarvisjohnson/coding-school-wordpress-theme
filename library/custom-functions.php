@@ -33,21 +33,25 @@ function custom_admin_head() {
 }
 add_action('admin_head', 'custom_admin_head');
 
-/** Custom WooCommerce Button Text  **/
+/** 
+	WooCommerce
+**/
 
-add_filter( 'woocommerce_product_add_to_cart_text' , 'custom_woocommerce_product_add_to_cart_text' );
+	/** Custom WooCommerce Button Text  **/
 
-/**
- * custom_woocommerce_template_loop_add_to_cart
-*/
-function custom_woocommerce_product_add_to_cart_text() {
-	global $product;
-	
-	$product_type = $product->product_cat;
-	
-	switch ( $product_type ) {
-		default:
-			return __( 'Enrol Now', 'woocommerce' );
+	add_filter( 'woocommerce_product_add_to_cart_text' , 'custom_woocommerce_product_add_to_cart_text' );
+
+	/**
+	 * custom_woocommerce_template_loop_add_to_cart
+	*/
+	function custom_woocommerce_product_add_to_cart_text() {
+		global $product;
+		
+		$product_type = $product->product_cat;
+		
+		switch ( $product_type ) {
+			default:
+				return __( 'Enrol Now', 'woocommerce' );
+		}
+		
 	}
-	
-}

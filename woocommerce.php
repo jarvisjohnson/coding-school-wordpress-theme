@@ -58,26 +58,45 @@ get_header(); ?>
 
 	<div id="page" role="main">
 
-	    <?php do_action( 'foundationpress_before_content' ); ?>
+	    <?php do_action( 'foundationpress_before_content' );
 
-			<?php while ( woocommerce_content() ) : the_post(); ?>
-				<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
-					<header>
-						<h1 class="entry-title"><?php the_title(); ?></h1>
-					</header>
-					<?php do_action( 'foundationpress_page_before_entry_content' ); ?>
-					<div class="entry-content">
-						<?php the_content(); ?>
-					</div>
-					<footer>
-						<?php wp_link_pages( array('before' => '<nav id="page-nav"><p>' . __( 'Pages:', 'foundationpress' ), 'after' => '</p></nav>' ) ); ?>
-						<p><?php the_tags(); ?></p>
-					</footer>
-					<?php do_action( 'foundationpress_page_before_comments' ); ?>
-					<?php comments_template(); ?>
-					<?php do_action( 'foundationpress_page_after_comments' ); ?>
-				</article>
-			<?php endwhile;?>
+
+        if ( is_singular( 'product' ) ) {
+
+            while ( have_posts() ) : the_post();
+
+                wc_get_template_part( 'content', 'single-product' );
+
+            endwhile;
+
+        } else { ?>
+
+            <?php do_action( 'woocommerce_archive_description' ); ?>
+
+            <?php if ( have_posts() ) : ?>
+
+                <?php do_action('woocommerce_before_shop_loop'); ?>
+
+                <?php woocommerce_product_loop_start(); ?>
+
+                    <?php woocommerce_product_subcategories(); ?>
+
+                    <?php while ( have_posts() ) : the_post(); ?>
+
+                        <?php wc_get_template_part( 'content', 'product' ); ?>
+
+                    <?php endwhile; // end of the loop. ?>
+
+                <?php woocommerce_product_loop_end(); ?>
+
+                <?php do_action('woocommerce_after_shop_loop'); ?>
+
+            <?php elseif ( ! woocommerce_product_subcategories( array( 'before' => woocommerce_product_loop_start( false ), 'after' => woocommerce_product_loop_end( false ) ) ) ) : ?>
+
+                <?php wc_get_template( 'loop/no-products-found.php' ); ?>
+
+            <?php endif;
+        }?>
 
 		<?php do_action( 'foundationpress_after_content' ); ?>
 

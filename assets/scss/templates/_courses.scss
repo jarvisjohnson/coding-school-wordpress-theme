@@ -96,6 +96,18 @@
 	}
 }
 
+.products{
+	@include grid-row();
+	.product{
+		@include breakpoint(small) {
+			@include grid-column(12);
+		}
+		@include breakpoint(medium) {
+			@include grid-column(6);
+		}
+	}
+}
+
 //Each Course - Index
 .add_to_cart_button{
 	@include button-arrow();
