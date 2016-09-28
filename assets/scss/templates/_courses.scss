@@ -18,6 +18,8 @@
 	margin: 0 auto;
 	text-align: center;	
 	top:-1.5em;
+	height: 0;	
+	z-index: 1;	
 	.switch{
 		background: $main-blue;
 		display: inline-block;
@@ -68,6 +70,29 @@
 	background: $white;
 	header{
 		@include grid-row();
+		position: relative;	
+		overflow: hidden;	
+	}
+	.hidden{
+		position: relative;
+		visibility: hidden;
+		}
+	.offline{
+		left: 100%;
+	}
+	.online{
+		left: -100%;
+	}			
+	.online, .offline{
+		position: absolute;
+		width: 100%;
+		top: 0;
+		visibility: hidden;
+		transition: $transition;
+		&.active{
+			left:0;
+			visibility: visible;
+		}
 	}
 }
 
