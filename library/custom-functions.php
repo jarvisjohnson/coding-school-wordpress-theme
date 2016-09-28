@@ -15,15 +15,18 @@
  */
 
 /** Allow upload of svgs's */
-
-function cc_mime_types($mimes) {
-  $mimes['svg'] = 'image/svg+xml';
-  return $mimes;
+/*-----------------------------------------------------------------------------------*/
+/*  enable svg images in media uploader
+/*-----------------------------------------------------------------------------------*/
+function cc_mime_types( $mimes ){
+$mimes['svg'] = 'image/svg+xml';
+return $mimes;
 }
-add_filter('upload_mimes', 'cc_mime_types');
+add_filter( 'upload_mimes', 'cc_mime_types' );
 
-/** Fix admin display of svgs's */
-
+/*-----------------------------------------------------------------------------------*/
+/*  display svg images on media uploader and feature images
+/*-----------------------------------------------------------------------------------*/
 function custom_admin_head() {
   $css = '';
 
@@ -32,7 +35,6 @@ function custom_admin_head() {
   echo '<style type="text/css">'.$css.'</style>';
 }
 add_action('admin_head', 'custom_admin_head');
-
 /** 
 	WooCommerce
 **/
