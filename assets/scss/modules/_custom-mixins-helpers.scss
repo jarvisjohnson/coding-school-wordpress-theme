@@ -23,6 +23,18 @@ $transition: all .3s ease-in-out;
   background-clip: padding-box;  /* stops bg color from leaking outside the border: */
 }
 
+@mixin padding-top-bottom(){
+     @include breakpoint(small) {
+      padding-top: 5px; 
+      padding-bottom: 5px;
+   }
+   @include breakpoint(medium) {
+      padding-top: 10px; 
+      padding-bottom: 10px;
+   }
+}
+
+
 @mixin blockquote() {
 	p{
 	font-style: italic;

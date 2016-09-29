@@ -98,15 +98,49 @@
 
 .products{
 	@include grid-row();
-	.product{
+	.product-wrap{
 		@include breakpoint(small) {
 			@include grid-column(12);
 		}
 		@include breakpoint(medium) {
 			@include grid-column(6);
 		}
+		.product{
+			border: $border;
+			@include padding-top-bottom();
+			@include grid-row();
+			@include radius();
+			@include shadow();
+			background: $white;			
+			.title, .details, .skills, .short{
+				@include grid-column(12);
+				@include padding-top-bottom();
+				border-bottom: $border;
+			}
+			.short{
+				border-bottom: none;
+			}
+			.skills-buy{
+				@include padding-top-bottom();
+				.left, .right{
+					@include breakpoint(small) {
+						@include grid-column(12);
+					}
+					@include breakpoint(medium) {
+						@include grid-column(6);
+						@include padding-top-bottom();
+					}
+				}
+				img{
+				  	width: 50px !important;
+    				height: 50px !important;
+				}
+			}
+		}
 	}
 }
+
+
 
 //Each Course - Index
 .add_to_cart_button{

@@ -47,6 +47,8 @@ get_header( 'shop' ); ?>
 			 */
 			do_action( 'woocommerce_archive_description' );
 		?>
+		
+<aside id="tag-brand-logo"><?php print apply_filters( 'taxonomy-images-queried-term-image', '' ); ?></aside>
 
 		<?php if ( have_posts() ) : ?>
 

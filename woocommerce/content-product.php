@@ -27,84 +27,84 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
 ?>
-<div <?php post_class(); ?>>
-	<?php
-	/**
-	 * woocommerce_before_shop_loop_item hook.
-	 *
-	 * @hooked woocommerce_template_loop_product_link_open - 10
-	 */
-	do_action( 'woocommerce_before_shop_loop_item' );
+<div class="product-wrap">
+	<div <?php post_class(); ?> >
+		<?php
+		/**
+		 * woocommerce_before_shop_loop_item hook.
+		 *
+		 * @hooked woocommerce_template_loop_product_link_open - 10
+		 */
+		//do_action( 'woocommerce_before_shop_loop_item' );
 
-	/**
-	 * woocommerce_before_shop_loop_item_title hook.
-	 *
-	 * @hooked woocommerce_show_product_loop_sale_flash - 10
-	 * @hooked woocommerce_template_loop_product_thumbnail - 10
-	 */
-	do_action( 'woocommerce_before_shop_loop_item_title' );
+		/**
+		 * woocommerce_before_shop_loop_item_title hook.
+		 *
+		 * @hooked woocommerce_show_product_loop_sale_flash - 10
+		 * @hooked woocommerce_template_loop_product_thumbnail - 10
+		 */
+		//do_action( 'woocommerce_before_shop_loop_item_title' );
+		
+		?>
+	<!-- Customisation -->
+		<div class="title">
+			<span class="icon"><img src="<?php the_field('course_icon') ?>"></span>
+			<h4>
+				<?php	
+				/**
+				 * woocommerce_shop_loop_item_title hook.
+				 *
+				 * @hooked woocommerce_template_loop_product_title - 10
+				 */
+				do_action( 'swish_woocommerce_shop_loop_item_title' );		
+				/**
+				 * woocommerce_after_shop_loop_item_title hook.
+				 *
+				 * @hooked woocommerce_template_loop_rating - 5
+				 * @hooked woocommerce_template_loop_price - 10
+				 */
+				// do_action( 'woocommerce_after_shop_loop_item_title' );
 
-	/**
-	 * woocommerce_shop_loop_item_title hook.
-	 *
-	 * @hooked woocommerce_template_loop_product_title - 10
-	 */
-	do_action( 'woocommerce_shop_loop_item_title' );		
-	/**
-	 * woocommerce_after_shop_loop_item_title hook.
-	 *
-	 * @hooked woocommerce_template_loop_rating - 5
-	 * @hooked woocommerce_template_loop_price - 10
-	 */
-	do_action( 'woocommerce_after_shop_loop_item_title' );
 
-
-	?>
-<!-- Customisation -->
-	<div class="details">
-	   <p>
-		<span class="part">
-			<strong>Date</strong>
-			<span> <?php the_field('video_presenter_title'); ?>Text</span>
-		</span>	
-		<span class="part">
-			<strong>Duration</strong>
-			<span> <?php the_field('video_presenter_title'); ?>Text</span>
-		</span>	
-		<span class="part">
-			<strong>Cost</strong>
-			<span><?php echo $product->get_price_html(); ?></span>
-		</span>					
-	   </p>
-	</div>
-	<div class="short">
-		<?php the_excerpt() ?>
-	</div>
-	<div class="skills-buy">
-		<div class="left">
-	        <?php
-	        if( have_rows('key_skills') ):
-	            while ( have_rows('key_skills') ) : the_row(); ?>
-	                <div class="skill">
-	                  <img src="<?php the_sub_field('key_skill_image'); ?>">
-	                </div>
-	            <?php endwhile;
-	        else :
-	        endif;
-	        ?>
+				?>
+			</h4>
+		</div>	
+		<div class="details">
+				<span class="part">
+					<strong>Date</strong>
+					<span> <?php the_field('video_presenter_title'); ?>Text</span>
+				</span>	
+				<span class="part">
+					<strong>Duration</strong>
+					<span> <?php the_field('video_presenter_title'); ?>Text</span>
+				</span>	
+				<span class="part">
+					<strong>Cost</strong>
+					<span><?php echo $product->get_price_html(); ?></span>
+				</span>					
+		  </div>
+		<div class="short">
+			<?php the_excerpt() ?>
 		</div>
-		<div class="right">
-			<?php	
-			/**
-			 * woocommerce_after_shop_loop_item hook.
-			 *
-			 * @hooked woocommerce_template_loop_product_link_close - 5
-			 * @hooked woocommerce_template_loop_add_to_cart - 10
-			 */
-			do_action( 'woocommerce_after_shop_loop_item' );	
-			?>
-		</div>
-	</div>	
-<!-- // Customisation -->
+		<div class="skills-buy">
+			<div class="left text-left">
+				<?php // echo do_shortcode('[product_tags]'); 
+				echo do_shortcode(' [taximage taxonomy="product_tag"]');
+				?>
+			</div>
+			<div class="right text-right">
+				<?php	
+				/**
+				 * woocommerce_after_shop_loop_item hook.
+				 *
+				 * @hooked woocommerce_template_loop_product_link_close - 5
+				 * @hooked woocommerce_template_loop_add_to_cart - 10
+				 */
+				do_action( 'woocommerce_after_shop_loop_item' );	
+				?>
+			</div>
+		</div>	
+	<!-- // Customisation -->
 
+	</div>
 </div>

@@ -57,3 +57,26 @@ add_action('admin_head', 'custom_admin_head');
 		}
 		
 	}
+	/** Custom WooCommerce Button Text  **/
+
+	/**
+	 * custom_woocommerce_template_loop_add_to_cart
+	*/
+	function custom_woocommerce_shop_loop_item_title() {
+		the_title();
+	}		
+
+	remove_action( 'woocommerce_shop_loop_item_title' , 'woocommerce_shop_loop_item_title', 10 );
+
+	add_action( 'swish_woocommerce_shop_loop_item_title' , 'custom_woocommerce_shop_loop_item_title', 10 );
+
+	
+	/**
+	 * Get Product Tag Images
+	**/
+
+		add_shortcode('taximage', 'taximage');
+		function taximage($args) {
+		global $post;
+		return apply_filters( 'taxonomy-images-list-the-terms', '', array('post_id' => $post->ID, 'taxonomy' => $args['taxonomy']) );
+		}

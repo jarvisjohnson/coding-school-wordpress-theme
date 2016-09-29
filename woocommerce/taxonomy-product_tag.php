@@ -20,3 +20,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 wc_get_template( 'archive-product.php' );
+
+?>
+
+<aside id="tag-brand-logo"><?php print apply_filters( 'taxonomy-images-queried-term-image', '' ); ?></aside>
+<?php
