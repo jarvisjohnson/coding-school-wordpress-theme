@@ -34,6 +34,9 @@ $transition: all .3s ease-in-out;
    }
 }
 
+@mixin iconhover() {
+  opacity: .8;
+}
 
 @mixin blockquote() {
 	p{

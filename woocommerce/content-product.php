@@ -49,7 +49,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	<!-- Customisation -->
 		<div class="title">
 			<span class="icon"><img src="<?php the_field('course_icon') ?>"></span>
-			<h4>
+			<a href="<?php the_permalink(); ?>"><h3>
 				<?php	
 				/**
 				 * woocommerce_shop_loop_item_title hook.
@@ -67,32 +67,35 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 
 
 				?>
-			</h4>
+			</h3></a>
 		</div>	
 		<div class="details">
 				<span class="part">
 					<strong>Date</strong>
 					<span> <?php the_field('video_presenter_title'); ?>Text</span>
 				</span>	
-				<span class="part">
+				<span class="part text-center">
 					<strong>Duration</strong>
 					<span> <?php the_field('video_presenter_title'); ?>Text</span>
 				</span>	
-				<span class="part">
+				<span class="part text-right">
 					<strong>Cost</strong>
 					<span><?php echo $product->get_price_html(); ?></span>
 				</span>					
 		  </div>
 		<div class="short">
-			<?php the_excerpt() ?>
+			<?php echo apply_filters( 'woocommerce_short_description', $post->post_excerpt ); ?>
+			<h1><?php the_field('about_heading');?>
 		</div>
 		<div class="skills-buy">
 			<div class="left text-left">
+				<h5>Key Skills</h5>
 				<?php // echo do_shortcode('[product_tags]'); 
 				echo do_shortcode(' [taximage taxonomy="product_tag"]');
 				?>
 			</div>
 			<div class="right text-right">
+				<a  class="button" href="<?php the_permalink(); ?>">Learn More</a> 
 				<?php	
 				/**
 				 * woocommerce_after_shop_loop_item hook.

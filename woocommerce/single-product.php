@@ -22,6 +22,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header( 'shop' ); ?>
 
+
+
+<?php echo'on this page' ;?>
 	<?php
 		/**
 		 * woocommerce_before_main_content hook.
@@ -55,5 +58,7 @@ get_header( 'shop' ); ?>
 		 */
 		do_action( 'woocommerce_sidebar' );
 	?>
+
+<?php get_template_part( '../template-parts/fixed-scroller' ); ?>
 
 <?php get_footer( 'shop' ); ?>

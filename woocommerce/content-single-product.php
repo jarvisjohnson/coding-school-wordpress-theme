@@ -36,6 +36,81 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 }
 ?>
 
+<arcticle id="overview" class="text-center">
+	<div class="site-section__row">
+		<div class="course-benefits">
+			<h1 class="course-benefits__heading"><?php the_field('about_description'); ?></h1>
+			<div class="course-benefits__tagline">Tagline. Tagline. Tagline. Tagline. Tagline. Tagline. Tagline. Tagline. Tagline. Tagline. Tagline. Tagline. Tagline. Tagline. </div>
+			<div class="course-benefits__wrapper">
+			<?php
+			if( have_rows('benefits') ):
+			    while ( have_rows('benefits') ) : the_row(); ?>
+				<div class="course-benefits__benefit">
+					<div class="course-benefits__image">
+						<img src="<?php the_sub_field('benefit_image'); ?>">
+					</div>
+					<div class="course-benefits__details">
+						<h2 class="course-benefits__title">
+							<?php the_sub_field('benefit_heading'); ?>
+						</h2>
+						<p class="course-benefits__text">
+							<?php the_sub_field('benefit_description'); ?>
+						</p>
+					</div>
+				</div>
+			    <?php endwhile;
+			else :
+			endif;
+			?>
+			</div>
+		</div>
+	</div>
+</arcticle>
+<article id="outcomes" class="text-center">
+	<div class="site-section__row">
+		<div class="course-outcomes">
+			<h1 class="course-outcomes__heading">
+				Outcomes
+			</h1>
+			<div class="course-outcomes__tagline">
+				<?php the_field('learning_outcomes_description'); ?>
+			</div>
+			<div class="course-outcomes__wrapper">
+				<?php
+				if( have_rows('learning_outcomes') ):
+				    while ( have_rows('learning_outcomes') ) : the_row(); ?>
+						<div class="course-outcomes__row">
+							<div class="course-outcomes__outcome">
+								<div class="course-outcomes__image">
+									<img src="<?php the_sub_field('outcome_image'); ?>">
+								</div>
+								<div class="course-outcomes__details">
+									<div class="h2_title">
+										<?php the_sub_field('outcome_heading'); ?>
+									</div>
+									<div class="p course-outcomes__text">
+										<?php the_sub_field('outcome_desciption'); ?>
+									</div>
+								</div>
+							</div>
+						</div>
+				    <?php endwhile;
+				else :
+				endif;
+				?>
+			</div>
+		</div>
+	</div>  
+</article>
+<article id="dates" class="text-center">
+
+</article>
+<article id="faqs" class="text-center">
+	<div class="site-section__row">
+		<h2>Course Heading</h2>	
+	</div>
+</article>
+
 <div itemscope itemtype="<?php echo woocommerce_get_product_schema(); ?>" id="product-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<?php

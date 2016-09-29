@@ -80,3 +80,4 @@ add_action('admin_head', 'custom_admin_head');
 		global $post;
 		return apply_filters( 'taxonomy-images-list-the-terms', '', array('post_id' => $post->ID, 'taxonomy' => $args['taxonomy']) );
 		}
+

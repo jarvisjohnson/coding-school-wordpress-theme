@@ -12,24 +12,20 @@ get_header(); ?>
 	 <?php $image = get_field('courses_header_image', 17); ?>
 
     <header id="featured-hero" role="banner" style="background-image: url('<?php echo $image ?>')">
-        <div class="wrap">
-        	<h1 class="page-title">Courses</h1>
-        </div>
+        <article class="wrap text-center">
+        	<h1 class="page-title">
+		        <?php if (is_product_tag()) {
+		        	echo 'Learn: ';	
+		        } else {};
+				 woocommerce_page_title(); ?>
+        	
+        	</h1>
+        </article>
     </header>
 
 	<!-- // Image Header -->
     <!-- Course Switcher -->
-
-	    <div class="switcher">
-	        <div class="switch">
-	            <a id="online-courses" class="active">
-	                <span>Online Courses</span>
-	           </a>
-	            <a id="campus-courses">
-	                <span>On Campus Courses</span>
-	           </a>             
-	        </div>                 
-	    </div>
+<?php get_template_part( 'template-parts/switcher' ); ?>
 
 	<!-- // Course Switcher -->
 
@@ -58,7 +54,7 @@ get_header(); ?>
 
 	<div id="page" role="main">
 
-	    <article class="products">
+
 
 		    <?php do_action( 'foundationpress_before_content' );
 
@@ -71,7 +67,11 @@ get_header(); ?>
 
 	            endwhile;
 
-	        } else { ?>
+	        } else ?>
+
+ 	    <article class="products">
+
+	         <?php { ?>
 
 	            <?php // do_action( 'woocommerce_archive_description' ); ?>
 
@@ -111,7 +111,9 @@ get_header(); ?>
 	<!-- // Content Wrapper -->
 
 
-<?php get_template_part( 'template-parts/switcher' ); ?>
+
 
 
 <?php get_footer();
+
+ get_template_part( 'template-parts/fixed-scroller' ); 

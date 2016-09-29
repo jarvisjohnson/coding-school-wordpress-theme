@@ -1,26 +1,55 @@
-//Courses Index Page
-	//Switcher Method
-.product_cat-online{
-	display: block;
+//Animation
+
+// @keyframes show {
+//   from {opacity: 0;}
+//   to {opacity: 1;}
+// }
+
+// @keyframes hide {
+//   from {opacity: 1;}
+//   to {opacity: 0;}
+// }
+#page{
+	padding-top: 0;
 }
-.product_cat-on-campus{
-	display: none;
-}
-.product_cat-online.no-display{
-	display: none;
-}
-.product_cat-on-campus.display{
-	display: block;
+.post-type-archive-product{
+	.product_cat-online{
+		display: block;
+	}
+	.product_cat-on-campus{
+		display: none;
+		.add_to_cart_button{
+			display: none!important;
+		}
+	}
+	.product_cat-online.no-display{
+	  // animation: hide 250ms ease-in-out both;	
+	  display: none;
+	}
+	.product_cat-on-campus.display{
+	  display: block;
+	  // animation: show 250ms ease-in-out both;
+	}
 }
 	//Switcher
 .switcher {
 	position: relative;
 	margin: 0 auto;
 	text-align: center;	
-	top:-1.5em;
+	top:-22px;
 	height: 0;	
-	z-index: 1;	
+	z-index: 2;	
+	width: 100%;
 	.switch{
+		@include grid-row();
+		@include breakpoint(small) {
+			width: calc(100% - 1.25rem);
+			// margin-left: 0.625rem;
+   //  		margin-right: 0.625rem;
+		}
+		@include breakpoint(medium) {
+			width: 600px;
+		}
 		background: $main-blue;
 		display: inline-block;
 		border: 3px solid $main-blue;
@@ -28,8 +57,9 @@
 		@include shadow();
 		@include radius($large-radius);
 		a{
+			@include grid-column(6);
 			margin:0!important;
-			width: 250px;
+			// width: 250px;
 			border-radius: 0!important;
 			display: inline-block;
 			border: 0!important;
@@ -53,15 +83,55 @@
 			}	
 
 		}
-		margin:0;
+		margin:0 auto;
 	}
 }
+
+.switcher.single{
+	.switch{
+		width: 800px;
+		a{
+			@include grid-column(3);
+			&:after, :before{
+				display: none;
+			}
+			&:focus{
+				box-shadow: none!important;
+				background: $white;
+			}
+			&.active{
+				color:$white;
+				background: initial;
+			}
+		}
+	}
+	.apply{
+		@include button();
+	}
+}
+
+.fixNav .switcher{
+	position: fixed;
+	top: 18px;
+}
+
+// #fixed-bar{
+// 	width:100%;
+// 	background: $white;
+// 	position: fixed;
+// 	top: 0;
+// 	z-index: 1;
+// }
 
 //Image Header
 #featured-hero{
 	margin: 0;
 	.wrap{
 		@include grid-row();
+		color: $white;
+	}
+	h1{
+		color:$white;
 	}
 }
 
@@ -112,23 +182,35 @@
 			@include radius();
 			@include shadow();
 			background: $white;			
-			.title, .details, .skills, .short{
+			.title, .part, .skills, .short{
 				@include grid-column(12);
 				@include padding-top-bottom();
 				border-bottom: $border;
 			}
+			.part {
+				@include grid-column(4);
+			}
 			.short{
 				border-bottom: none;
+				p{
+					margin-bottom: 0;
+					@include padding-top-bottom();
+				}
 			}
 			.skills-buy{
-				@include padding-top-bottom();
+				.right {
+					@include padding-top-bottom();
+						& .button{
+						@include button-arrow();
+						margin-bottom: 7px;					
+					}	
+				}			
 				.left, .right{
 					@include breakpoint(small) {
 						@include grid-column(12);
 					}
 					@include breakpoint(medium) {
 						@include grid-column(6);
-						@include padding-top-bottom();
 					}
 				}
 				img{
@@ -140,7 +222,35 @@
 	}
 }
 
+.taxonomy-images-the-terms{
+		padding-bottom: 0;
+		margin-bottom: 0!important;
+	li{
+		padding-bottom: 0;
+		margin-bottom: 0;
+	}
+	li a{	
+		transition: $transition;
+				background-color: $lightish-gray;
+		padding: 8px;
+			& img{
+			opacity: 1;	
+			transition: $transition;
+			border: $white 5px solid;
+			border-radius: 50%;
+		}	
+	}
+	li a:hover{
+			background-color: $mediumish-gray;
+			// box-shadow: inset 0 0 .5px .5px $dark-gray;			
+		& img{
+			// opacity: .8;
+			border: $light-gray 3px solid;
+			
+		}
 
+	}
+}
 
 //Each Course - Index
 .add_to_cart_button{

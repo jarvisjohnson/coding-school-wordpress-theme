@@ -8,6 +8,8 @@
 	endif; ?>
 
 	<header id="featured-hero" role="banner" style="background-image: url('<?php echo $image ?>')">
-		<h1 class="page-title"><?php the_title(); ?></h1>
+	    <article class="wrap text-center">
+			<h1 class="page-title"><?php the_title(); ?></h1>
+	    </article>
 	</header>
 

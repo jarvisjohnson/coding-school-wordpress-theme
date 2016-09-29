@@ -22,11 +22,27 @@
     top: 1.3rem;
     left: 1rem;
   }
+  @include breakpoint(small){  
+      height: 4rem;
+  }
+  @include breakpoint(medium){  
+      height: auto;
+  }  
 }
 
 .title-bar-title {
   @include grid-row();
   text-align: center;
+  @include breakpoint(small){
+    margin-left: 4rem;
+    margin-right: 1rem;
+    margin-top: .5rem;
+  }
+    @include breakpoint(medium){
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+  }
 }
 
 .menu-icon:after{

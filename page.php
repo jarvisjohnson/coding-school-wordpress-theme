@@ -13,17 +13,6 @@ get_header(); ?>
 
   <?php get_template_part( 'template-parts/featured-image' ); ?>
 
-            <div class="switcher">
-                <div class="switch">
-                    <a id="online-courses" class="active">
-                        <span>Online Courses</span>
-                   </a>
-                    <a id="campus-courses">
-                        <span>On Campus Courses</span>
-                   </a>             
-                </div>                 
-            </div>
-
  <div id="page" role="main">
 
 
