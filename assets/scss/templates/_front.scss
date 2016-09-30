@@ -36,6 +36,9 @@ body.home, .home .off-canvas-content {
  	          color: $white;
  	          margin-bottom: 1rem;
 			}
+			form{
+				padding-bottom: 10px;
+			}
 			input[type="text"], input[type="email"]{
 				@include foundation-form-text;
 			}

@@ -39,27 +39,28 @@ form{
   }  
 }
 
-.woocommerce form{
-      @include radius();
-      @include shadow();
-      overflow: hidden;
-      @include foundation-forms();
-      h5{
-      margin-left: -0.9375rem;
-            margin-right: -0.9375rem;
-            text-align: center;
-            background: $footer-blue;
-            padding: 10px;
-            color: $white;
-            margin-bottom: 1rem;
-      }
+// .woocommerce .product form{
+//       @include radius();
+//       @include shadow();
+//       overflow: hidden;
+//       @include foundation-forms();
+//       h5{
+//       margin-left: -0.9375rem;
+//             margin-right: -0.9375rem;
+//             text-align: center;
+//             background: $footer-blue;
+//             padding: 10px;
+//             color: $white;
+//             margin-bottom: 1rem;
+//       }
       // input[type="text"], input[type="email"]{
       //   @include foundation-form-text;
       // }
       // input[type="*"]{
       //   @include no-box();
       // }
-      input[type="submit"]{
+.woocommerce form, .woocommqerce .product{      
+      input[type="submit"], button.button, .button, a.button{
         @include button();
       }       
       input{
@@ -67,7 +68,9 @@ form{
       }
 
 }
-
+.woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button{
+  @include button();
+}
 ::-webkit-input-placeholder {
    color: $dark-gray;
 }

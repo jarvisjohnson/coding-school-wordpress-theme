@@ -36,36 +36,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 }
 ?>
 
-<arcticle id="overview" class="text-center">
-	<div class="site-section__row">
-		<div class="course-benefits">
-			<h1 class="course-benefits__heading"><?php the_field('about_description'); ?></h1>
-			<div class="course-benefits__tagline">Tagline. Tagline. Tagline. Tagline. Tagline. Tagline. Tagline. Tagline. Tagline. Tagline. Tagline. Tagline. Tagline. Tagline. </div>
-			<div class="course-benefits__wrapper">
-			<?php
-			if( have_rows('benefits') ):
-			    while ( have_rows('benefits') ) : the_row(); ?>
-				<div class="course-benefits__benefit">
-					<div class="course-benefits__image">
-						<img src="<?php the_sub_field('benefit_image'); ?>">
-					</div>
-					<div class="course-benefits__details">
-						<h2 class="course-benefits__title">
-							<?php the_sub_field('benefit_heading'); ?>
-						</h2>
-						<p class="course-benefits__text">
-							<?php the_sub_field('benefit_description'); ?>
-						</p>
-					</div>
-				</div>
-			    <?php endwhile;
-			else :
-			endif;
-			?>
-			</div>
-		</div>
-	</div>
-</arcticle>
 <article id="outcomes" class="text-center">
 	<div class="site-section__row">
 		<div class="course-outcomes">
