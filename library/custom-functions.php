@@ -81,3 +81,29 @@ add_action('admin_head', 'custom_admin_head');
 		return apply_filters( 'taxonomy-images-list-the-terms', '', array('post_id' => $post->ID, 'taxonomy' => $args['taxonomy']) );
 		}
 
+	/**
+	 * Get On Campus / Online Course Type
+	**/	
+
+		add_shortcode('course_type', 'course_type');
+		function course_type() {
+			$courseType = '';
+			$cats = get_the_terms( $post->ID, 'product_cat' );
+			foreach ( $cats as $cat ) $categories[] = $cat->slug;
+				if ( in_array( 'on-campus', $categories ) ) {
+				  $courseType = 'campus';
+				} elseif ( in_array( 'online', $categories ) ) {
+				  $courseType = 'online';
+				} else {
+				  $courseType = 'none-other';
+				}
+			echo '<style type="text/css">';
+				if ( $courseType == "campus" )	{
+					echo '.campus{}';					
+				} elseif ( $courseType == "online" ) {
+					echo '.online{}';
+				}
+				else {}
+			echo '</style>';				 
+		}
+

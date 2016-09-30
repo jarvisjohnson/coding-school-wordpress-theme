@@ -36,8 +36,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 }
 ?>
 
+<?php
+//Is it an online or on-campus product?
+echo do_shortcode ('[course_type]');
+?>
+
 <article id="outcomes" class="text-center">
-	<div class="site-section__row">
+	<div class="wrap">
 		<div class="course-outcomes">
 			<h1 class="course-outcomes__heading">
 				Outcomes
@@ -73,10 +78,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 	</div>  
 </article>
 <article id="dates" class="text-center">
+	<div class="wrap">
+		<h2>Course Heading</h2>	
+		<?php
+			$cats = get_the_terms( $post->ID, 'product_cat' );
+			foreach ( $cats as $cat ) $categories[] = $cat->slug;
+			if ( in_array( 'on-campus', $categories ) ) {
+			  echo 'On Campus';
+			} elseif ( in_array( 'online', $categories ) ) {
+			  echo 'Online';
+			} else {
+			  echo 'some blabla';
+			}
+			 ?>
 
+	</div>
 </article>
 <article id="faqs" class="text-center">
-	<div class="site-section__row">
+	<div class="wrap">
 		<h2>Course Heading</h2>	
 	</div>
 </article>
@@ -120,7 +139,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		 * @hooked woocommerce_upsell_display - 15
 		 * @hooked woocommerce_output_related_products - 20
 		 */
-		do_action( 'woocommerce_after_single_product_summary' );
+		//do_action( 'woocommerce_after_single_product_summary' );
 	?>
 
 	<meta itemprop="url" content="<?php the_permalink(); ?>" />

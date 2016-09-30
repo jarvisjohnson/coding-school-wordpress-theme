@@ -1,4 +1,5 @@
-      <?php if ( is_shop() || is_product_tag() ) { ?>
+<!--switcher-->
+   <?php if ( is_shop() || is_product_tag() ) { ?>
       <div class="switcher">
           <div class="switch">
               <a id="online-courses" class="active">
@@ -9,7 +10,7 @@
              </a>             
           </div>                 
       </div>        
-        <?php } elseif ( is_product() ) { ?>      
+    <?php } elseif ( is_product() ) { ?>      
       <div class="switcher single">
           <div class="switch">
               <a href="#overview" id="overview-link" class="ps2id">
@@ -25,10 +26,10 @@
                   <span>FAQs</span>
              </a>                        
           </div>  
-          <div>
-          <a class="apply">
-            APPLY
-          </a>
+          <div class="apply">
+            <a class="button">
+              APPLY
+            </a>
           </div>               
       </div>
     <?php } else { }?>        
@@ -58,3 +59,4 @@ $( "#campus-courses").click(function() {
   }
 });  
 </script>
+<!-- //switcher -->

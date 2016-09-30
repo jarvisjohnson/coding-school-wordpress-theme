@@ -105,8 +105,20 @@
 			}
 		}
 	}
+
 	.apply{
-		@include button();
+		display: inline-block;
+		vertical-align: top;	
+		a{
+			@include button();
+			background-color: $yellow!important;
+			border: 3px solid darken($yellow, 15%)!important;
+			@include shadow();
+			@include radius($large-radius);
+			&:hover{
+				background-color: darken($yellow, 15%)!important;
+			}
+		}
 	}
 }
 
@@ -265,6 +277,11 @@
 
 
 ///Single Course Page
-#overview, #dates{
-	background: $white;
+.single-product{
+	article .wrap, .product.first{
+		@include grid-row();
+	}
+	#overview, #dates{
+		background: $white;
+	}
 }
