@@ -10,21 +10,45 @@
              </a>             
           </div>                 
       </div>        
-    <?php } elseif ( is_product() ) { ?>      
+    <?php } elseif ( is_product() ) { ?>   
+
+              <?php while ( have_posts() ) : the_post(); 
+
+                // vars 
+                $sections = get_field('sections_to_display'); ?>
+
+                
+                <?php 
+                // check
+                if( $sections ): ?>
+                  <?php foreach( $sections as $section ): ?>
+                  <?php endforeach; ?>
+                <?php endif; ?>  
+
       <div class="switcher single">
           <div class="switch">
+
+          <?php if ( in_array( 1, $sections ) ) { ?>
               <a href="#overview" id="overview-link" class="ps2id">
                   <span>Overview</span>
              </a>
+          <?php }; if ( in_array( 2, $sections ) ) { ?>   
               <a href="#outcomes" id="outcomes-link" class="ps2id">
                   <span>Learning outcomes</span>
-             </a>    
-              <a href="#dates" id="dates-link" class="ps2id">
+             </a>
+          <?php }; if ( in_array( 3, $sections ) ) { ?>   
+              <a href="#description" id="description-link" class="ps2id">
+                  <span>Syllabus</span>
+             </a>             
+          <?php }; if ( in_array( 4, $sections ) ) { ?>          
+              <a href="#details" id="details-link" class="ps2id">
                   <span>Upcoming dates</span>
              </a>  
+          <?php }; if ( in_array( 5, $sections ) ) { ?>      
             <a href="#faqs" id="faqs-link" class="ps2id">
                   <span>FAQs</span>
-             </a>                        
+             </a>
+          <?php } ?>                              
           </div>  
           <div class="apply">
             <a class="button">
@@ -32,7 +56,9 @@
             </a>
           </div>               
       </div>
-    <?php } else { }?>        
+    <?php 
+        endwhile;
+    } else { }?>        
 <script type="text/javascript">
 $( "#online-courses").click(function() {
   $( this ).addClass( "active" ).siblings().removeClass('active');

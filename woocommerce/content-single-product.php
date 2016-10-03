@@ -19,7 +19,6 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
-
 ?>
 
 <?php
@@ -34,71 +33,109 @@ if ( ! defined( 'ABSPATH' ) ) {
 	 	echo get_the_password_form();
 	 	return;
 	 }
-?>
 
-<?php
-//Is it an online or on-campus product?
-echo do_shortcode ('[course_type]');
-?>
+    // vars 
+    $sections = get_field('sections_to_display');
+   // check
+   if( $sections ): ?>
+     <?php foreach( $sections as $section ): ?>
+     <?php endforeach; ?>
+   <?php endif; ?>  
 
+<?php if ( in_array( 2, $sections ) ) { ?>
 <article id="outcomes" class="text-center">
 	<div class="wrap">
-		<div class="course-outcomes">
-			<h1 class="course-outcomes__heading">
+			<h2>
 				Outcomes
-			</h1>
-			<div class="course-outcomes__tagline">
+			</h2>
+			<h5>
 				<?php the_field('learning_outcomes_description'); ?>
-			</div>
-			<div class="course-outcomes__wrapper">
+			</h5>
+			<div class="wrapper">
 				<?php
 				if( have_rows('learning_outcomes') ):
 				    while ( have_rows('learning_outcomes') ) : the_row(); ?>
-						<div class="course-outcomes__row">
-							<div class="course-outcomes__outcome">
-								<div class="course-outcomes__image">
-									<img src="<?php the_sub_field('outcome_image'); ?>">
-								</div>
-								<div class="course-outcomes__details">
-									<div class="h2_title">
-										<?php the_sub_field('outcome_heading'); ?>
+							<div class="outcome">
+								<div class="inner-wrap">
+									<div class="image">
+										<img src="<?php the_sub_field('outcome_image'); ?>">
 									</div>
-									<div class="p course-outcomes__text">
-										<?php the_sub_field('outcome_desciption'); ?>
+									<div class="details text-left">
+										<h4>
+											<?php the_sub_field('outcome_heading'); ?>
+										</h4>
+										<p>
+											<?php the_sub_field('outcome_desciption'); ?>
+										</p>
 									</div>
 								</div>
 							</div>
-						</div>
 				    <?php endwhile;
 				else :
 				endif;
 				?>
 			</div>
-		</div>
 	</div>  
 </article>
-<article id="dates" class="text-center">
-	<div class="wrap">
-		<h2>Course Heading</h2>	
-		<?php
-			$cats = get_the_terms( $post->ID, 'product_cat' );
-			foreach ( $cats as $cat ) $categories[] = $cat->slug;
-			if ( in_array( 'on-campus', $categories ) ) {
-			  echo 'On Campus';
-			} elseif ( in_array( 'online', $categories ) ) {
-			  echo 'Online';
-			} else {
-			  echo 'some blabla';
-			}
-			 ?>
+<?php } ?>
+<?php
+//Is it an online or on-campus product?
+echo do_shortcode ('[course_type]');
+?>
 
+<?php if ( in_array( 3, $sections ) ) { ?>
+<article id="description" class="text-center">
+	<div class="wrap">
+		<h2>Syllabus</h2>	
 	</div>
 </article>
+<?php }; if ( in_array( 4, $sections ) ) { ?>
+<article id="details" class="text-center">
+	<div class="wrap">
+		<h2>Upcoming dates for <?php the_field('campus_name');?></h2><?php
+
+			// check if the repeater field has rows of data
+			if( have_rows('course_dates') ):
+
+			 	// loop through the rows of data
+			    while ( have_rows('course_dates') ) : the_row(); ?>
+					<div class="course-dates">
+						<div class="header text-center">
+							<?php 			        // display a sub field value
+					        the_sub_field('start_date'); - the_sub_field('end_date');
+					        ?>							
+						</div>
+						<div class="details">
+							<div class="days text-left"></div>
+							<div class="times text-right"></div>
+						</div>
+						<div class="address text-left">
+							<?php the_field('campus_address');?>
+						</div>
+						<div class="contact-purchase">
+							<div class="contact text-left"></div>
+							<div class="purchase text-right"></div>							
+						</div>
+					</div>	
+
+			    <?php endwhile;
+
+			else :
+
+			    // no rows found
+
+			endif;
+
+		?>	
+	</div>
+</article>
+<?php }; if ( in_array( 5, $sections ) ) { ?>
 <article id="faqs" class="text-center">
 	<div class="wrap">
-		<h2>Course Heading</h2>	
+		<h2>FAQs</h2>	
 	</div>
 </article>
+<?php } ?>
 
 <div itemscope itemtype="<?php echo woocommerce_get_product_schema(); ?>" id="product-<?php the_ID(); ?>" <?php post_class(); ?>>
 

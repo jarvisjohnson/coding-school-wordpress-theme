@@ -16,8 +16,11 @@ get_header(); ?>
         	<h1 class="page-title">
 		        <?php if (is_product_tag()) {
 		        	echo 'Learn: ';	
-		        } else {};
-				 woocommerce_page_title(); ?>
+		        } elseif ( is_product() )  {
+		        	the_title();
+		        }	else {
+				 woocommerce_page_title(); 
+		        } ?>
         	
         	</h1>
         </article>

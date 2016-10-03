@@ -7,7 +7,7 @@ if ( is_product() ){  ?>
 	<header>
 		<div class="course-benefits">
 			<h1 class="course-benefits__heading"><?php the_field('about_description'); ?></h1>
-			<div class="course-benefits__tagline">Tagline. Tagline. Tagline. Tagline. Tagline. Tagline. Tagline. Tagline. Tagline. Tagline. Tagline. Tagline. Tagline. Tagline. </div>
+			<div class="course-benefits__tagline"><?php the_field('course_tagline'); ?></div>
 			<div class="course-benefits__wrapper">
 			<?php
 			if( have_rows('benefits') ):

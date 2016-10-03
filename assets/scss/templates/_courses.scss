@@ -43,12 +43,12 @@
 	.switch{
 		@include grid-row();
 		@include breakpoint(small) {
-			width: calc(100% - 1.25rem);
+			//width: calc(100% - 1.25rem);
 			// margin-left: 0.625rem;
    //  		margin-right: 0.625rem;
 		}
 		@include breakpoint(medium) {
-			width: 600px;
+			//width: 600px;
 		}
 		background: $main-blue;
 		display: inline-block;
@@ -57,13 +57,14 @@
 		@include shadow();
 		@include radius($large-radius);
 		a{
-			@include grid-column(6);
-			margin:0!important;
+			//@include grid-column(6);
+			margin:-2px!important;
 			// width: 250px;
 			border-radius: 0!important;
 			display: inline-block;
 			border: 0!important;
 			@include button($background:$white,$color:$main-blue,$background-hover:$light-blue);
+			padding: 1rem!important;
 				&:after, &:before{
 					content: '\f070';
 				   font-family: FontAwesome;
@@ -89,15 +90,14 @@
 
 .switcher.single{
 	.switch{
-		width: 800px;
+		//width: 900px;
 		a{
-			@include grid-column(3);
-			&:after, :before{
+			&:after, &:before{
 				display: none;
 			}
 			&:focus{
-				box-shadow: none!important;
-				background: $white;
+				//box-shadow: none!important;
+				//background: $white;
 			}
 			&.active{
 				color:$white;
@@ -115,6 +115,7 @@
 			border: 3px solid darken($yellow, 15%)!important;
 			@include shadow();
 			@include radius($large-radius);
+			padding: calc(1rem - 2px)!important;
 			&:hover{
 				background-color: darken($yellow, 15%)!important;
 			}
@@ -281,7 +282,43 @@
 	article .wrap, .product.first{
 		@include grid-row();
 	}
-	#overview, #dates{
+	article:nth-of-type(2n-1){
 		background: $white;
+	}
+	header article{
+		background: initial!important;
+	}
+}
+
+
+//Outcomes Section
+#outcomes {
+	.wrapper{
+		@include grid-row();
+		.outcome{
+			background-color: $dark-blue;
+			*{color: $white!important;}
+			@include padding-top-bottom();
+			&:nth-child(2n){
+				background-color: $yellow;
+				*{color: $heading-gray!important;}
+				}
+			@include breakpoint(small){
+				@include grid-column(12);
+			}
+			@include breakpoint(medium){
+				@include grid-column(6);
+			}
+			.inner-wrap{
+				@include padding-top-bottom();
+				@include grid-row();
+				.image{ 
+					@include grid-column(3);
+				}
+				.details{ 
+					@include grid-column(9);
+				}				
+			}			
+		}
 	}
 }

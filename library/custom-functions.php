@@ -97,13 +97,11 @@ add_action('admin_head', 'custom_admin_head');
 				} else {
 				  $courseType = 'none-other';
 				}
-			echo '<style type="text/css">';
-				if ( $courseType == "campus" )	{
-					echo '.campus{}';					
-				} elseif ( $courseType == "online" ) {
-					echo '.online{}';
-				}
-				else {}
-			echo '</style>';				 
+			if ( $courseType == "campus" )	{
+				get_template_part( 'template-parts/course-on-campus' );	
+			} elseif ( $courseType == "online" ) {
+				get_template_part( 'template-parts/course-online' );
+			}
+			else {}	 
 		}
 
