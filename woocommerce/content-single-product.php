@@ -48,9 +48,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<h2>
 				Outcomes
 			</h2>
-			<h5>
+			<p>
 				<?php the_field('learning_outcomes_description'); ?>
-			</h5>
+			</p>
 			<div class="wrapper">
 				<?php
 				if( have_rows('learning_outcomes') ):
@@ -87,6 +87,9 @@ echo do_shortcode ('[course_type]');
 <article id="description" class="text-center">
 	<div class="wrap">
 		<h2>Syllabus</h2>	
+		<div class="content">
+			<?php the_content(); ?>
+		</div>
 	</div>
 </article>
 <?php }; if ( in_array( 4, $sections ) ) { ?>
@@ -131,9 +134,31 @@ echo do_shortcode ('[course_type]');
 </article>
 <?php }; if ( in_array( 5, $sections ) ) { ?>
 <article id="faqs" class="text-center">
-	<div class="wrap">
-		<h2>FAQs</h2>	
-	</div>
+	<header>
+		<div class="wrapper">
+		<h2 class="heading">FAQs</h2>
+			<?php
+			if( have_rows('faqs') ): ?>
+			<ol class="wrap">
+			  <?php while ( have_rows('faqs') ) : the_row(); ?>
+
+				<li class="benefit small-centered">
+						<div class="details text-left">
+							<h4>
+								<?php the_sub_field('faq_heading'); ?>
+							</h4>
+							<p>
+								<?php the_sub_field('faq_description'); ?>
+							</p>
+						</div>
+				</li>
+		    <?php endwhile; ?>
+		   </ol>
+		<?php else :
+		endif;
+		?>
+		</div>
+	</header>
 </article>
 <?php } ?>
 

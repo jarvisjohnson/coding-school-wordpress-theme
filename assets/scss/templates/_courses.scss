@@ -317,8 +317,43 @@
 				}
 				.details{ 
 					@include grid-column(9);
+					h4{
+						@include padding-top-bottom();
+					}					
 				}				
 			}			
+		}
+	}
+}
+
+
+
+//Benfits Section
+#overview, #faqs {
+	header .wrapper{
+		@include grid-row();
+		.wrap{
+		@include grid-row();
+			}
+		.benefit{
+			@include padding-top-bottom();
+			@include breakpoint(small){
+				@include grid-column(10);
+				float: none !important;
+			}
+			.inner-wrap{
+				@include padding-top-bottom();
+				@include grid-row();
+				.image{ 
+					@include grid-column(2);
+				}
+				.details{ 
+					@include grid-column(10);
+					h4{
+						@include padding-top-bottom();
+					}
+				}				
+			}		
 		}
 	}
 }

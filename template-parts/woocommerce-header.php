@@ -5,31 +5,33 @@ if ( is_product() ){  ?>
 
 <article id="overview" class="text-center">
 	<header>
-		<div class="course-benefits">
-			<h1 class="course-benefits__heading"><?php the_field('about_description'); ?></h1>
-			<div class="course-benefits__tagline"><?php the_field('course_tagline'); ?></div>
-			<div class="course-benefits__wrapper">
+		<div class="wrapper">
+		<h2 class="heading"><?php the_field('about_heading'); ?></h2>
+		<p class="tagline"><?php the_field('course_tagline'); ?></p>
 			<?php
 			if( have_rows('benefits') ):
-			    while ( have_rows('benefits') ) : the_row(); ?>
-				<div class="course-benefits__benefit">
-					<div class="course-benefits__image">
-						<img src="<?php the_sub_field('benefit_image'); ?>">
-					</div>
-					<div class="course-benefits__details">
-						<h2 class="course-benefits__title">
-							<?php the_sub_field('benefit_heading'); ?>
-						</h2>
-						<p class="course-benefits__text">
-							<?php the_sub_field('benefit_description'); ?>
-						</p>
+			  while ( have_rows('benefits') ) : the_row(); ?>
+			<div class="wrap">
+				<div class="benefit small-centered">
+					<div class="inner-wrap">
+						<div class="image">
+							<img src="<?php the_sub_field('benefit_image'); ?>">
+						</div>
+						<div class="details text-left">
+							<h4>
+								<?php the_sub_field('benefit_heading'); ?>
+							</h4>
+							<p>
+								<?php the_sub_field('benefit_description'); ?>
+							</p>
+						</div>
 					</div>
 				</div>
-			    <?php endwhile;
-			else :
-			endif;
-			?>
-			</div>
+				</div>
+		    <?php endwhile;
+		else :
+		endif;
+		?>
 		</div>
 	</header>
 </article>
