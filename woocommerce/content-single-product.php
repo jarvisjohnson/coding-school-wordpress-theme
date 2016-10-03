@@ -94,15 +94,39 @@ echo do_shortcode ('[course_type]');
 </article>
 <?php }; if ( in_array( 4, $sections ) ) { ?>
 <article id="details" class="text-center">
+
+	<?php $campuses = get_field('campus'); ?>
+
 	<div class="wrap">
-		<h2>Upcoming dates for <?php the_field('campus_name');?></h2><?php
+
+	   <?php if( $campuses ): ?>
+
+		<h2>Upcoming dates for 				
+			<select class="campus-toggle" data-target=".courses">
+				<?php foreach( $campuses as $campus ):
+					$lowerCamp = strtolower($campus); ?>
+						<option value="<?php echo $campus; ?>" data-show=".<?php echo $lowerCamp; ?>"><?php echo $campus; ?></option>
+				<?php endforeach; ?>
+			</select>
+		</h2>
+
+		<?php endif; ?>
+
+
+	   <?php if( $campuses ): ?>
+	   	<div class="courses">
+	     <?php foreach( $campuses as $campus ):
+	     $campus = strtolower($campus);
 
 			// check if the repeater field has rows of data
-			if( have_rows('course_dates') ):
+			if( have_rows($campus) ): ?>
 
+
+
+			 	<?php 
 			 	// loop through the rows of data
-			    while ( have_rows('course_dates') ) : the_row(); ?>
-					<div class="course-dates">
+			    while ( have_rows($campus) ) : the_row(); ?>
+					<div class="<?php echo $campus; ?> hide">
 						<div class="header text-center">
 							<?php 			        // display a sub field value
 					        the_sub_field('start_date'); - the_sub_field('end_date');
@@ -121,15 +145,27 @@ echo do_shortcode ('[course_type]');
 						</div>
 					</div>	
 
-			    <?php endwhile;
+			    <?php endwhile; ?>
 
-			else :
 
-			    // no rows found
+			<?php else : ?>
 
-			endif;
+				<div class="signup">
+					<h5 class="collapse">Stay Connected With Us</h5>
+					<div>
+						<?php echo do_shortcode('[contact-form-7 id="258" title="Course Updates"]') ?>
+					</div>
+				</div>
+
+			<?php endif;
 
 		?>	
+	     	<?php echo $campus; ?>
+	     <?php endforeach; ?>
+
+		</div>
+	   <?php endif; ?>
+
 	</div>
 </article>
 <?php }; if ( in_array( 5, $sections ) ) { ?>
@@ -209,3 +245,16 @@ echo do_shortcode ('[course_type]');
 </div><!-- #product-<?php the_ID(); ?> -->
 
 <?php do_action( 'woocommerce_after_single_product' ); ?>
+
+
+<script>
+jQuery(document).on('change', '.campus-toggle', function() {
+  var target = $(this).data('target');
+  var show = $("option:selected", this).data('show');
+  $(target).children().addClass('hide');
+  $(show).removeClass('hide');
+});
+jQuery(document).ready(function(){
+    $('.campus-toggle').trigger('change');
+});
+</script>

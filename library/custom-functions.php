@@ -105,3 +105,42 @@ add_action('admin_head', 'custom_admin_head');
 			else {}	 
 		}
 
+/** ACF dynamically load campuses for each course based on those available in options page **/
+/** from: https://www.advancedcustomfields.com/resources/dynamically-populate-a-select-fields-choices/ **/
+
+function acf_load_campus_field_choices( $field ) {
+    
+    // reset choices
+    $field['choices'] = array();
+
+
+    // if has rows
+    if( have_rows('all_campuses', 'option') ) {
+        
+        // while has rows
+        while( have_rows('all_campuses', 'option') ) {
+            
+            // instantiate row
+            the_row();
+            
+            
+            // vars
+            $value = get_sub_field('value');
+            $label = get_sub_field('label');
+
+            
+            // append to choices
+            $field['choices'][ $value ] = $label;
+            
+        }
+        
+    }
+
+
+    // return the field
+    return $field;
+    
+}
+
+add_filter('acf/load_field/name=campus', 'acf_load_campus_field_choices');
+
