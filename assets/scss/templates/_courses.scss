@@ -272,7 +272,7 @@
 }
 
 //Each Course - Index
-.add_to_cart_button{
+.add_to_cart_button, .add-request-quote-button{
 	@include button-arrow();
 	background-color: $main-blue!important;
 	color: $white!important;

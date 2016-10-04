@@ -44,67 +44,19 @@ get_header(); ?>
 
 
 <article class="courses">
-
-	<div class="inner">
-
-	<?php
-	   if( have_rows('upcoming_courses') ): ?>
-		<table>
-		  <thead>
-		    <tr class="border">
-		      <th width="200" class="icon">
-		      	<i class="fa fa-calendar-o" />
-		      </th>
-		      <th>Upcoming Courses</th>
-		      <th></th>
-		    </tr>
-		    <tr height="1px" bgcolor="black"></tr>
-		  </thead>
-		  <tbody>
-		   <?php while ( have_rows('upcoming_courses') ) : the_row(); ?>
-	        <?php
-
-	        $post_object = get_sub_field('upcoming_course');
-
-		        if( $post_object ): 
-
-		          // override $post
-		          $post = $post_object;
-		          setup_postdata( $post ); 
-
-		          ?>
-
-		          <?php $date = get_field('course_date');
-					$date2 = date("F j Y", strtotime($date)); 
-					$location = get_field('course_location'); ?>
-
-				    <tr class="border">
-				      <td class="icon">
-				      	<img src="<?php the_field('course_icon') ?>">
-				      </td>
-				      <td>
-				      	<h4 class="title"><?php the_title() ?></h4>
-				      	<h6>
-					      	<span><?php echo $date2; ?> - </span><span><?php the_field('course_duration') ?> weeks</span><br>
-					      	<span><?php echo $location['address']; ?></span><br>
-				          	<span>$<?php the_field('course_cost') ?></span>
-			          	</h6>
-				      </td>
-				      <td class="course-button">
-				      	<a href="<?php echo esc_url( get_permalink() ); ?>" class="upcoming-courses__learn-more">Learn More</a>
-				      </td>
-				    </tr>
-				   	<tr height="1px"></tr>
-			        <?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
-		        <?php endif; ?>
-	    	<?php endwhile; ?>
-		  </tbody>
-		</table>
-	<?php else :
-	endif;
-	?> 
+	<div class="wrap">
+		<div class="item-wrap">
+			<header>
+				<div class="icon text-left">
+					<i class="fa fa-calendar-o"></i>
+				</div>
+				<div class="upcoming text-left">
+					Upcoming Courses
+				</div> 
+			</header>
+			<?php echo do_shortcode('[featured_products per_page="6"]');?>
+		</div>
 	</div>
-
 </article>
 
 <article class="skills">

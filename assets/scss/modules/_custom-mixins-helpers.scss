@@ -9,6 +9,7 @@ $transition: all .3s ease-in-out;
 //Helpers
 .mono {
  font-family: Droid Sans Mono, monospace;
+ font-size: 15px;
 }
 
 .shadow{
@@ -19,8 +20,20 @@ $transition: all .3s ease-in-out;
   display: none;
 }
 
-.bridge-woo-associated-courses{
+.fa-user:before {
+  vertical-align: sub;
+}
+
+.bridge-woo-associated-courses, #rqa_text_field_row, #rqa_text_field_row_2 {
   display: none;
+}
+
+.product_cat-on-campus .add_to_cart_button {
+  display: none!important;
+}
+
+table{
+  table-layout: fixed;
 }
 //Mixins
 @mixin radius($radius: $global-radius) {

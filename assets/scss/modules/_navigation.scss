@@ -56,8 +56,8 @@
 /* Mobile menu */
 
 .off-canvas.position-left {
-    -webkit-box-shadow: 0 0 10px rgba(10, 10, 10, 0.5);
-    box-shadow: 0 0 10px rgba(10, 10, 10, 0.5);
+    // -webkit-box-shadow: 0 0 10px rgba(10, 10, 10, 0.5);
+    // box-shadow: 0 0 10px rgba(10, 10, 10, 0.5);
     z-index: 1;
 }
 
@@ -75,11 +75,6 @@
   color: $white;
   font-weight: bold;
   }
-  button{
-    @include shadow();
-    @include button();
-    // @include radius($small-radius);
-  }
   max-height: initial;
   min-height: 100%;
  > ul.menu {
@@ -89,10 +84,19 @@
       padding: 1rem;
       color: $white;
       font-weight: bold;
+      background-color: $footer-blue;
     }
-    li a:hover, li.active a{
+    li a:hover{
       background: $footer-blue-hover;
     }    
+  }
+  button{
+    @include shadow();
+    @include button();
+    // @include radius($small-radius);
+    &:hover{
+      background-color: $dark-blue;
+    }
   }
   .upper{
     padding: 1rem;

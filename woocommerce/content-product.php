@@ -27,6 +27,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
 ?>
+<?php if (!(is_front_page())){ ?>
 <div class="product-wrap">
 	<div <?php post_class(); ?> >
 		<?php
@@ -111,3 +112,81 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 
 	</div>
 </div>
+<?php } 
+else { ?>
+
+<!-- 	<div class="product-wrap"> -->
+		<div <?php post_class(); ?> >
+			<?php
+			/**
+			 * woocommerce_before_shop_loop_item hook.
+			 *
+			 * @hooked woocommerce_template_loop_product_link_open - 10
+			 */
+			//do_action( 'woocommerce_before_shop_loop_item' );
+
+			/**
+			 * woocommerce_before_shop_loop_item_title hook.
+			 *
+			 * @hooked woocommerce_show_product_loop_sale_flash - 10
+			 * @hooked woocommerce_template_loop_product_thumbnail - 10
+			 */
+			//do_action( 'woocommerce_before_shop_loop_item_title' );
+			
+			?>
+		<!-- Customisation -->
+				<div class="icon">
+					<?php echo $product->get_image($size = 'shop_thumbnail' ); ?>
+						
+				</div>
+				<div class="content">
+					<a href="<?php the_permalink(); ?>"><h4>
+						<?php	
+						/**
+						 * woocommerce_shop_loop_item_title hook.
+						 *
+						 * @hooked woocommerce_template_loop_product_title - 10
+						 */
+						do_action( 'swish_woocommerce_shop_loop_item_title' );		
+						/**
+						 * woocommerce_after_shop_loop_item_title hook.
+						 *
+						 * @hooked woocommerce_template_loop_rating - 5
+						 * @hooked woocommerce_template_loop_price - 10
+						 */
+						// do_action( 'woocommerce_after_shop_loop_item_title' );
+
+
+						?>
+					</h4></a>
+					<div class="campuses mono">
+						<?php $campuses = get_field('campus'); 
+						if ($campuses):
+							foreach ($campuses as $campus):
+								echo '- ' . $campus . '&nbsp';
+								// echo
+							endforeach; 
+						endif ?>
+					</div>
+					<div class="price mono">
+						<span><?php echo $product->get_price_html(); ?></span>
+					</div>
+				</div>
+				<div class="right text-right">
+					<a  class="button" href="<?php the_permalink(); ?>">Learn More</a> 
+					<?php	
+					/**
+					 * woocommerce_after_shop_loop_item hook.
+					 *
+					 * @hooked woocommerce_template_loop_product_link_close - 5
+					 * @hooked woocommerce_template_loop_add_to_cart - 10
+					 */
+					do_action( 'woocommerce_after_shop_loop_item' );	
+					?>
+				</div>
+		<!-- // Customisation -->
+
+<!-- 		</div> -->
+	</div>
+
+<?php } ?>

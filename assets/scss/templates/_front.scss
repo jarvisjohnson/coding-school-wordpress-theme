@@ -157,7 +157,8 @@ body.home, .home .off-canvas-content {
 				margin-top: 100%;
 			}
 			button{
-				width:100%;
+				width:calc(100% - 1.25rem);
+				bottom: 1.25rem;
 			}			
 		}
 		@include breakpoint(medium) {
@@ -167,7 +168,8 @@ body.home, .home .off-canvas-content {
 			}
 			button{
 				width:80%;
-			}				
+				bottom: 0;
+			}							
 		}		
 		display: inline-block;
 	    position: relative;
@@ -182,11 +184,10 @@ body.home, .home .off-canvas-content {
 			@include shadow();			
 		    position: absolute;
 		    top: 0;
-		    bottom: 0;
-		    left: 0;
+		    left: .625rem;
 		    right: 0;
 		}
-		padding: 0 !important;
+		// padding: 0 !important;
 
 
 
@@ -211,42 +212,90 @@ body.home, .home .off-canvas-content {
 //
 .courses {
 	background: $lightest-blue;
-
-	.inner{
+	.wrap{
 		@include grid-row();
 		max-width: 60rem;
-		text-align: left;
-		table{
-			.icon{
-				padding-left: 30px;
-				color: $main-blue;
-			}
-		    border-collapse: separate;
-		    border-spacing: 0;
+		.item-wrap{
+			// @include grid-column(12);
+			background-color: $white;
 			@include radius();
 			@include shadow();
-			overflow: hidden;
-			background: $medium-gray;
 			border: $border;
-			thead{
-				font-weight: 900;
+			header, .product {
+				@include grid-column(12);
+				@include padding-top-bottom();
+				&:not(:last-child){
+					border-bottom: 1px solid $dark-gray;
+				}
 			}
-			thead, tbody .border:not:last-of-type{
-				border-bottom: $border;
+			.icon{
+				@include breakpoint(small){
+					@include grid-column(4);
+				}
+				@include breakpoint(medium){
+					@include grid-column(2);
+				}
+				color: $main-blue;
 			}
-			td a {
-				@include button();
+			.content{
+				@include breakpoint(small){
+					@include grid-column(8);
+				}
+				@include breakpoint(medium){
+					@include grid-column(8);
+				}
 			}
-			.course-button{
-				text-align: right;
-				padding-right: 30px;
-			}
-			.title{
-				text-transform: uppercase;
-			}
+			.right{
+				@include breakpoint(small){
+					@include grid-column(12);
+				}
+				@include breakpoint(medium){
+					@include grid-column(2);
+				}
+				a.button{
+					margin-bottom: 10px;
+				}
+			}							
 		}
-
 	}
+
+	// .inner{
+
+	// @include grid-row();
+	// 	max-width: 60rem;
+	// 	text-align: left;
+	// 	table{
+		
+	// 		.icon{
+	// 			padding-left: 30px;
+	// 			color: $main-blue;
+	// 		}
+	// 	    border-collapse: separate;
+	// 	    border-spacing: 0;
+	// 		@include radius();
+	// 		@include shadow();
+	// 		overflow: hidden;
+	// 		background: $medium-gray;
+	// 		border: $border;
+	// 		thead{
+	// 			font-weight: 900;
+	// 		}
+	// 		thead, tbody .border:not:last-of-type{
+	// 			border-bottom: $border;
+	// 		}
+	// 		td a {
+	// 			@include button();
+	// 		}
+	// 		.course-button{
+	// 			text-align: right;
+	// 			padding-right: 30px;
+	// 		}
+	// 		.title{
+	// 			text-transform: uppercase;
+	// 		}
+	// 	}
+
+	// }
 
 }
 
