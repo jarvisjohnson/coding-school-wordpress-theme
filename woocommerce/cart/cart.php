@@ -35,7 +35,8 @@ do_action( 'woocommerce_before_cart' ); ?>
 			<th class="product-thumbnail">&nbsp;</th>
 			<th class="product-name"><?php _e( 'Product', 'woocommerce' ); ?></th>
 			<th class="product-price"><?php _e( 'Price', 'woocommerce' ); ?></th>
-			<th class="product-quantity"><?php _e( 'Quantity', 'woocommerce' ); ?></th>
+			<th class="product-campus" style="display: none;">Desired Campus?</th>
+			<th class="product-quantity" style="display: none;"><?php _e( 'Quantity', 'woocommerce' ); ?></th>
 			<th class="product-subtotal"><?php _e( 'Total', 'woocommerce' ); ?></th>
 		</tr>
 	</thead>
@@ -100,7 +101,23 @@ do_action( 'woocommerce_before_cart' ); ?>
 						?>
 					</td>
 
-					<td class="product-quantity" data-title="<?php _e( 'Quantity', 'woocommerce' ); ?>">
+					<td class="campus-select" style="display: none;">
+					<select name="campus" id="cart-campus-select" class="campus-cart-toggle" data-target="#rqa_text_field_row">
+						<?php $this_item = strval($product_id);
+						var_dump($this_item);
+						$campuses = get_field('campus' , $this_item); 
+						if ($campuses):
+							foreach ($campuses as $campus):
+								echo '<option data-update="#rqa-text-field" value="' .  $campus . '">' . $campus . '</option>';
+								// echo
+							endforeach;
+						else :
+								echo '<option data-update="#rqa-text-field" value="any-campus">Any Campus</option>';
+						endif ?>
+					</select>
+					</td>					
+
+					<td class="product-quantity" data-title="<?php _e( 'Quantity', 'woocommerce' ); ?>" style="display:none;">
 						<?php
 							if ( $_product->is_sold_individually() ) {
 								$product_quantity = sprintf( '1 <input type="hidden" name="cart[%s][qty]" value="1" />', $cart_item_key );

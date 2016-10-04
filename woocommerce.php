@@ -9,7 +9,11 @@ get_header(); ?>
 
 	<!-- Image Header -->
 
-	 <?php $image = get_field('courses_header_image', 17); ?>
+	 <?php if ( is_product() )  {
+	  $image = get_field('header_image'); 
+	  } else {
+	  $image = get_field('courses_header_image', 17); 
+	  } ?>
 
     <header id="featured-hero" role="banner" style="background-image: url('<?php echo $image ?>')">
         <article class="wrap text-center">

@@ -31,6 +31,12 @@ if ( ! $checkout->enable_signup && ! $checkout->enable_guest_checkout && ! is_us
 }
 
 ?>
+<?php
+$contents = WC()->cart->cart_contents;
+if( $contents ) foreach ( $contents as $cart_item ){
+  echo $cart_item['product_id'];
+}
+?>
 
 <form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
 

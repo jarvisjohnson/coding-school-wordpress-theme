@@ -165,39 +165,52 @@ function acf_load_campus_field_choices( $field ) {
 
 add_filter('acf/load_field/name=campus', 'acf_load_campus_field_choices');
 
-// function acf_load_campus_address( $field ) {
-    
-//     // reset choices
-//     $field['address'] = array();
+/**
+ * The following hook will add a input field right before "add to cart button"
+ * will be used for getting Name on t-shirt 
+ */
+function add_product_campus_field() {
+	$date = get_sub_field('start_date');
+    echo '<input type="hidden" class="update-campus" name="course-campus" value="" />';
+    echo '<input type="hidden" name="start-date" value="' . $date . '" />';
+}
+add_action( 'woocommerce_before_add_to_cart_button', 'add_product_campus_field', '40' );
 
+function save_campus_field( $cart_item_data, $product_id ) {
+    if( isset( $_REQUEST['course-campus'] ) ) {
+        $cart_item_data[ 'course-campus' ] = $_REQUEST['course-campus'];
+        $cart_item_data[ 'start-date' ] = $_REQUEST['start-date'];
+        /* below statement make sure every add to cart action as unique line item */
+        $cart_item_data['unique_key'] = md5( microtime().rand() );
+    }
+    return $cart_item_data;
+}
+add_action( 'woocommerce_add_cart_item_data', 'save_campus_field', 10, 2 );
 
-//     // if has rows
-//     if( have_rows('all_campuses', 'option') ) {
-        
-//         // while has rows
-//         while( have_rows('all_campuses', 'option') ) {
-            
-//             // instantiate row
-//             the_row();
-            
-            
-//             // vars
-//             $campus_address = get_sub_field('campus_address');
-//             $address = get_sub_field('label');
+function render_meta_on_cart_and_checkout( $cart_data, $cart_item = null ) {
+    $custom_items = array();
+    /* Woo 2.4.2 updates */
+    if( !empty( $cart_data ) ) {
+        $custom_items = $cart_data;
+    }
+    if( isset( $cart_item['course-campus'] ) ) {
+        $custom_items[] = array( "name" => 'Campus', "value" => $cart_item['course-campus'] );
+    }
+    if( isset( $cart_item['start-date'] ) ) {
+        $custom_items[] = array( "name" => 'Start Date', "value" => $cart_item['start-date'] );
+    }    
+    return $custom_items;
+}
+add_filter( 'woocommerce_get_item_data', 'render_meta_on_cart_and_checkout', 10, 2 );
 
-            
-//             // append to choices
-//             $field['address'] = $campus_address;
-            
-//         }
-        
-//     }
+function campus_order_meta_handler( $item_id, $values, $cart_item_key ) {
+    if( isset( $values['course-campus'] ) ) {
+        wc_add_order_item_meta( $item_id, "Campus", $values['course-campus'] );
+    }
+    if( isset( $values['start-date'] ) ) {
+        wc_add_order_item_meta( $item_id, "Start Date", $values['start-date'] );
+    }    
+}
+add_action( 'woocommerce_add_order_item_meta', 'campus_order_meta_handler', 1, 3 );
 
-
-//     // return the field
-//     return $field;
-    
-// }
-
-// add_filter('acf/load_field/name=perth', 'acf_load_campus_address');
 

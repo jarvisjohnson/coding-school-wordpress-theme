@@ -106,7 +106,7 @@ echo do_shortcode ('[course_type]');
 			<select class="campus-toggle" data-target=".courses">
 				<?php foreach( $campuses as $campus ):
 					$lowerCamp = strtolower($campus); ?>
-						<option value="<?php echo $campus; ?>" data-show=".<?php echo $lowerCamp; ?>"><?php echo $campus; ?></option>
+						<option value="<?php echo $campus; ?>" data-show=".<?php echo $lowerCamp; ?>" data-update=".update-campus"><?php echo $campus; ?></option>
 				<?php endforeach; ?>
 			</select>
 		</div>
@@ -115,7 +115,7 @@ echo do_shortcode ('[course_type]');
 
 
 	   <?php if( $campuses ): ?>
-	   	<dziv class="courses">
+	   	<div class="courses">
 	     <?php foreach( $campuses as $campus ):
 	     $campus = strtolower($campus);
 
@@ -138,30 +138,36 @@ echo do_shortcode ('[course_type]');
 						<div class="extra-wrap">
 							<div class="details">
 								<div class="days text-left">
-									<?php the_field('days_of_week'); ?>
+									<strong><?php the_field('days_of_week'); ?></strong>
 								</div>
 								<div class="times text-right">
-									<?php the_field('times'); ?>
+									<strong><?php the_field('times'); ?></strong>
 								</div>
 							</div>
 							<div class="details">
 								<div class="days text-left">
-									Coursework hours: <?php the_field('coursework_hours'); ?>
+									Coursework hours: <strong><?php the_field('coursework_hours'); ?></strong>
 								</div>
 								<div class="times text-right">
-									Contact hours: <?php the_field('contact_hours'); ?>
+									Contact hours: <strong><?php the_field('contact_hours'); ?></strong>
 								</div>
-							</div>						
+							</div>	
+							<hr>					
 							<div class="contact-purchase">
 								<div class="contact text-left">
 									<p>
 										Call us on:
 									</p>
+									<strong>
 									<a href="tel:<?php the_field('phone_number' , 'option'); ?>">
 										<?php the_field('phone_number' , 'option'); ?>
 									</a>
+									</strong>
 								</div>
 								<div class="purchase text-right">
+									<?php
+									do_action( 'woocommerce_before_add_to_cart_button' );
+									?>								
 									<?php
 									do_action( 'woocommerce_single_product_summary' );
 									?>
@@ -232,72 +238,22 @@ echo do_shortcode ('[course_type]');
 
 <?php endif; ?>  
 
-<article itemscope itemtype="<?php echo woocommerce_get_product_schema(); ?>" id="product-<?php the_ID(); ?>" <?php post_class(); ?>>
+<meta itemprop="url" content="<?php the_permalink(); ?>" />
 
-	<?php
-		/**
-		 * woocommerce_before_single_product_summary hook.
-		 *
-		 * @hooked woocommerce_show_product_sale_flash - 10
-		 * @hooked woocommerce_show_product_images - 20
-		 */
-		do_action( 'woocommerce_before_single_product_summary' );
-	?>
-
-	<div class="summary entry-summary">
-
-		<?php
-			/**
-			 * woocommerce_single_product_summary hook.
-			 *
-			 * @hooked woocommerce_template_single_title - 5
-			 * @hooked woocommerce_template_single_rating - 10
-			 * @hooked woocommerce_template_single_price - 10
-			 * @hooked woocommerce_template_single_excerpt - 20
-			 * @hooked woocommerce_template_single_add_to_cart - 30
-			 * @hooked woocommerce_template_single_meta - 40
-			 * @hooked woocommerce_template_single_sharing - 50
-			 */
-			do_action( 'woocommerce_single_product_summary' );
-		?>
-
-	</div><!-- .summary -->
-
-	<?php
-		/**
-		 * woocommerce_after_single_product_summary hook.
-		 *
-		 * @hooked woocommerce_output_product_data_tabs - 10
-		 * @hooked woocommerce_upsell_display - 15
-		 * @hooked woocommerce_output_related_products - 20
-		 */
-		//do_action( 'woocommerce_after_single_product_summary' );
-	?>
-
-	<meta itemprop="url" content="<?php the_permalink(); ?>" />
-
-</article><!-- #product-<?php the_ID(); ?> -->
 
 <?php do_action( 'woocommerce_after_single_product' ); ?>
 
-<style type="text/css">
-<?php if( get_field( 'apply_or_buy' ) == 'apply' ): ?>
-form.cart{
-	display: none!important;
-}
-<?php elseif( get_field( 'apply_or_buy' ) == 'buy' ): ?>
-.yith-ywraq-add-to-quote{
-	display: none!important;
-}
-<?php endif; ?>  
-</style>
+
 
 <script>
 jQuery(document).on('change', '.campus-toggle', function() {
   var target = $(this).data('target');
   var show = $("option:selected", this).data('show');
+  var update = $("option:selected", this).data('update');
+  var course = $(this).val();
   $(target).children().addClass('hide');
   $(show).removeClass('hide');
+  jQuery(update).val(course);  
 });
 jQuery(document).ready(function(){
     $('.campus-toggle').trigger('change');

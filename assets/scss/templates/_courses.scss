@@ -380,6 +380,9 @@
 	}
 	.courses .campus {
 		@include grid-row();
+		&:not(:first-child){
+			margin-top: 20px;
+		}
 		.extra-wrap, .header{
 			background: $white;
 			@include padding-top-bottom();
@@ -388,7 +391,7 @@
 				margin: 0 auto;
 			}
 			@include breakpoint(medium){
-				@include grid-column(6);
+				@include grid-column(8);
 			}
 			float: none !important;
 			@include radius();
@@ -405,8 +408,10 @@
 			border-top-left-radius: 0;
 			.details, .contact-purchase{
 				@include grid-row();
-				@include padding-top-bottom();
-				div{
+				// @include padding-top-bottom();
+				margin-left: -0.9375rem;
+ 	          	margin-right: -0.9375rem;
+				> div{
 					@include grid-column(6);
 				}
 			}
