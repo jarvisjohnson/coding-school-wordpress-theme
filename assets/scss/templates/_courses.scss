@@ -109,14 +109,20 @@
 	.apply{
 		display: inline-block;
 		vertical-align: top;	
+		@include radius($large-radius);
+		@include shadow();
 		a{
 			@include button();
 			background-color: $yellow!important;
 			border: 3px solid darken($yellow, 15%)!important;
-			@include shadow();
+			// @include shadow();
 			@include radius($large-radius);
 			padding: calc(1rem - 2px)!important;
 			&:hover{
+				background-color: darken($yellow, 15%)!important;
+			}
+			&:focus{
+				box-shadow: none!important;
 				background-color: darken($yellow, 15%)!important;
 			}
 		}
@@ -328,7 +334,7 @@
 
 
 
-//Benfits Section
+//Benefits Section
 #overview, #faqs {
 	header .wrapper{
 		@include grid-row();
@@ -355,5 +361,56 @@
 				}				
 			}		
 		}
+	}
+}
+
+#details{
+	text-align: center;
+	.rows{
+		@include grid-row();
+		h2{
+			display: inline-block
+		}
+		select{
+			@include grid-column(2);
+			float: none!important;
+			vertical-align: top;
+			background-position: right 0rem center;
+		}
+	}
+	.courses .campus {
+		@include grid-row();
+		.extra-wrap, .header{
+			background: $white;
+			@include padding-top-bottom();
+			@include breakpoint(small){
+				@include grid-column(12);
+				margin: 0 auto;
+			}
+			@include breakpoint(medium){
+				@include grid-column(6);
+			}
+			float: none !important;
+			@include radius();
+		}
+		.header {
+			background-color: $main-blue;
+			border-bottom-right-radius: 0;
+			border-bottom-left-radius: 0;
+			color: $white;
+		}
+		.extra-wrap{
+			@include shadow();
+			border-top-right-radius: 0;
+			border-top-left-radius: 0;
+			.details, .contact-purchase{
+				@include grid-row();
+				@include padding-top-bottom();
+				div{
+					@include grid-column(6);
+				}
+			}
+		}
+
 	}
 }

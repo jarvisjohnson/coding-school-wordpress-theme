@@ -40,7 +40,7 @@ if ( ! defined( 'ABSPATH' ) ) {
    if( $sections ): ?>
      <?php foreach( $sections as $section ): ?>
      <?php endforeach; ?>
-   <?php endif; ?>  
+
 
 <?php if ( in_array( 2, $sections ) ) { ?>
 <article id="outcomes" class="text-center">
@@ -93,7 +93,7 @@ echo do_shortcode ('[course_type]');
 	</div>
 </article>
 <?php }; if ( in_array( 4, $sections ) ) { ?>
-<article id="details" class="text-center">
+<article id="details" <?php post_class(); ?>>
 
 	<?php $campuses = get_field('campus'); ?>
 
@@ -101,20 +101,21 @@ echo do_shortcode ('[course_type]');
 
 	   <?php if( $campuses ): ?>
 
-		<h2>Upcoming dates for 				
+		<div class="rows">	
+		<h2>Upcoming dates for: </h2> 				
 			<select class="campus-toggle" data-target=".courses">
 				<?php foreach( $campuses as $campus ):
 					$lowerCamp = strtolower($campus); ?>
 						<option value="<?php echo $campus; ?>" data-show=".<?php echo $lowerCamp; ?>"><?php echo $campus; ?></option>
 				<?php endforeach; ?>
 			</select>
-		</h2>
+		</div>
 
 		<?php endif; ?>
 
 
 	   <?php if( $campuses ): ?>
-	   	<div class="courses">
+	   	<dziv class="courses">
 	     <?php foreach( $campuses as $campus ):
 	     $campus = strtolower($campus);
 
@@ -126,23 +127,47 @@ echo do_shortcode ('[course_type]');
 			 	<?php 
 			 	// loop through the rows of data
 			    while ( have_rows($campus) ) : the_row(); ?>
-					<div class="<?php echo $campus; ?> hide">
+					<div class="hide campus <?php echo $campus; ?> small-centered medium-centered">
 						<div class="header text-center">
 							<?php 			        // display a sub field value
-					        the_sub_field('start_date'); - the_sub_field('end_date');
+					        the_sub_field('start_date');
+					        echo ' - ';
+					        the_sub_field('end_date');
 					        ?>							
 						</div>
-						<div class="details">
-							<div class="days text-left"></div>
-							<div class="times text-right"></div>
-						</div>
-						<div class="address text-left">
-							<?php the_field('campus_address');?>
-						</div>
-						<div class="contact-purchase">
-							<div class="contact text-left"></div>
-							<div class="purchase text-right"></div>							
-						</div>
+						<div class="extra-wrap">
+							<div class="details">
+								<div class="days text-left">
+									<?php the_field('days_of_week'); ?>
+								</div>
+								<div class="times text-right">
+									<?php the_field('times'); ?>
+								</div>
+							</div>
+							<div class="details">
+								<div class="days text-left">
+									Coursework hours: <?php the_field('coursework_hours'); ?>
+								</div>
+								<div class="times text-right">
+									Contact hours: <?php the_field('contact_hours'); ?>
+								</div>
+							</div>						
+							<div class="contact-purchase">
+								<div class="contact text-left">
+									<p>
+										Call us on:
+									</p>
+									<a href="tel:<?php the_field('phone_number' , 'option'); ?>">
+										<?php the_field('phone_number' , 'option'); ?>
+									</a>
+								</div>
+								<div class="purchase text-right">
+									<?php
+									do_action( 'woocommerce_single_product_summary' );
+									?>
+								</div>							
+							</div>
+						</div>	
 					</div>	
 
 			    <?php endwhile; ?>
@@ -160,10 +185,17 @@ echo do_shortcode ('[course_type]');
 			<?php endif;
 
 		?>	
-	     	<?php echo $campus; ?>
+	     	<?php// echo $campus; ?>
 	     <?php endforeach; ?>
 
 		</div>
+		<?php else: ?>
+				<div class="signup">
+					<h5 class="collapse">Stay Connected With Us</h5>
+					<div>
+						<?php echo do_shortcode('[contact-form-7 id="258" title="Course Updates"]') ?>
+					</div>
+				</div>
 	   <?php endif; ?>
 
 	</div>
@@ -198,7 +230,9 @@ echo do_shortcode ('[course_type]');
 </article>
 <?php } ?>
 
-<div itemscope itemtype="<?php echo woocommerce_get_product_schema(); ?>" id="product-<?php the_ID(); ?>" <?php post_class(); ?>>
+<?php endif; ?>  
+
+<article itemscope itemtype="<?php echo woocommerce_get_product_schema(); ?>" id="product-<?php the_ID(); ?>" <?php post_class(); ?>>
 
 	<?php
 		/**
@@ -242,10 +276,21 @@ echo do_shortcode ('[course_type]');
 
 	<meta itemprop="url" content="<?php the_permalink(); ?>" />
 
-</div><!-- #product-<?php the_ID(); ?> -->
+</article><!-- #product-<?php the_ID(); ?> -->
 
 <?php do_action( 'woocommerce_after_single_product' ); ?>
 
+<style type="text/css">
+<?php if( get_field( 'apply_or_buy' ) == 'apply' ): ?>
+form.cart{
+	display: none!important;
+}
+<?php elseif( get_field( 'apply_or_buy' ) == 'buy' ): ?>
+.yith-ywraq-add-to-quote{
+	display: none!important;
+}
+<?php endif; ?>  
+</style>
 
 <script>
 jQuery(document).on('change', '.campus-toggle', function() {

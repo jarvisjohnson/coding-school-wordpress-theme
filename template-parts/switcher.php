@@ -23,7 +23,7 @@
                 if( $sections ): ?>
                   <?php foreach( $sections as $section ): ?>
                   <?php endforeach; ?>
-                <?php endif; ?>  
+
 
       <div class="switcher single">
           <div class="switch">
@@ -48,14 +48,17 @@
             <a href="#faqs" id="faqs-link" class="ps2id">
                   <span>FAQs</span>
              </a>
-          <?php } ?>                              
-          </div>  
+          <?php } ?>                            
+          </div> 
+          <?php if ( in_array( 4, $sections ) ) { ?>  
           <div class="apply">
-            <a class="button">
+            <a href="#details" class="ps2id button">
               APPLY
             </a>
-          </div>               
+          </div>
+          <?php } ?>               
       </div>
+    <?php endif; ?>    
     <?php 
         endwhile;
     } else { }?>        

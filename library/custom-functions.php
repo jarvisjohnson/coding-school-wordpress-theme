@@ -71,6 +71,18 @@ add_action('admin_head', 'custom_admin_head');
 	add_action( 'swish_woocommerce_shop_loop_item_title' , 'custom_woocommerce_shop_loop_item_title', 10 );
 
 	
+	add_action( 'swish_checkout_button' , 'woocommerce_template_single_add_to_cart' );
+
+
+	remove_action( 'woocommerce_single_product_summary' , 'woocommerce_template_single_title' , 5 );
+	remove_action( 'woocommerce_single_product_summary' , 'woocommerce_template_single_rating' , 10 );
+	remove_action( 'woocommerce_single_product_summary' , 'woocommerce_template_single_price' , 10 );
+	remove_action( 'woocommerce_single_product_summary' , 'woocommerce_template_single_excerpt' , 20 );
+	remove_action( 'woocommerce_single_product_summary' , 'woocommerce_template_single_meta' , 40 );
+	remove_action( 'woocommerce_single_product_summary' , 'woocommerce_template_single_sharing' , 50 );	
+
+
+	
 	/**
 	 * Get Product Tag Images
 	**/
@@ -104,6 +116,15 @@ add_action('admin_head', 'custom_admin_head');
 			}
 			else {}	 
 		}
+
+		/** https://www.philowen.co/blog/make-woocommerce-products-sold-individually-by-default/ **/
+		
+		function default_no_quantities( $individually, $product ){
+			$individually = true;
+			return $individually;
+		}
+		add_filter( 'woocommerce_is_sold_individually', 'default_no_quantities', 10, 2 );
+
 
 /** ACF dynamically load campuses for each course based on those available in options page **/
 /** from: https://www.advancedcustomfields.com/resources/dynamically-populate-a-select-fields-choices/ **/
@@ -143,4 +164,40 @@ function acf_load_campus_field_choices( $field ) {
 }
 
 add_filter('acf/load_field/name=campus', 'acf_load_campus_field_choices');
+
+// function acf_load_campus_address( $field ) {
+    
+//     // reset choices
+//     $field['address'] = array();
+
+
+//     // if has rows
+//     if( have_rows('all_campuses', 'option') ) {
+        
+//         // while has rows
+//         while( have_rows('all_campuses', 'option') ) {
+            
+//             // instantiate row
+//             the_row();
+            
+            
+//             // vars
+//             $campus_address = get_sub_field('campus_address');
+//             $address = get_sub_field('label');
+
+            
+//             // append to choices
+//             $field['address'] = $campus_address;
+            
+//         }
+        
+//     }
+
+
+//     // return the field
+//     return $field;
+    
+// }
+
+// add_filter('acf/load_field/name=perth', 'acf_load_campus_address');
 

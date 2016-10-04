@@ -19,7 +19,9 @@ $transition: all .3s ease-in-out;
   display: none;
 }
 
-
+.bridge-woo-associated-courses{
+  display: none;
+}
 //Mixins
 @mixin radius($radius: $global-radius) {
   -webkit-border-radius: $radius;
