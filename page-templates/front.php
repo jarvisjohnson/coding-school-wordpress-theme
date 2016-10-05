@@ -78,7 +78,12 @@ get_header(); ?>
               <p>
                 <?php the_sub_field('skill_description'); ?>
               </p>
-              <a href="<?php the_sub_field('highlight_link'); ?>">Learn more here</a>             
+               <?php $skill = get_sub_field('tag_link'); 
+        		$link =  get_term_link( $skill );
+        		$name = $skill->slug; ?>
+        		<a class="button" href="<?php echo $link; ?>">
+	                  Check out <?php echo $name; ?> courses
+	            </a>            
             </div>
         <?php endwhile;
     else :

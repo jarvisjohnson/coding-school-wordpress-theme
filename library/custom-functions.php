@@ -221,3 +221,16 @@ function campus_order_meta_handler( $item_id, $values, $cart_item_key ) {
 add_action( 'woocommerce_add_order_item_meta', 'campus_order_meta_handler', 1, 3 );
 
 
+/*** Admin Area **/
+
+	/** Set to Default 1 column for ease of use **/
+	function so_screen_layout_columns( $columns ) {
+    $columns['post'] = 1;
+    return $columns;
+	}
+	add_filter( 'screen_layout_columns', 'so_screen_layout_columns' );
+
+	function so_screen_layout_post() {
+	    return 1;
+	}
+	add_filter( 'get_user_option_screen_layout_post', 'so_screen_layout_post' );
