@@ -19,7 +19,8 @@ get_header(); ?>
         <article class="wrap text-center">
         	<h1 class="page-title">
 		        <?php if (is_product_tag()) {
-		        	echo 'Learn: ';	
+		        	echo 'Learn: ';
+		        	single_tag_title();
 		        } elseif ( is_product() )  {
 		        	the_title();
 		        }	else {

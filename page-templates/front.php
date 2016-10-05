@@ -29,11 +29,16 @@ get_header(); ?>
 	</header>
 	 <?php
         if( have_rows('highlights') ):
-            while ( have_rows('highlights') ) : the_row(); ?>
+            while ( have_rows('highlights') ) : the_row(); 
+        		$highlight = get_sub_field('highlight_link'); 
+        		$link =  get_term_link( $highlight ); ?>
         		<div class="highlight">
-	                <button href="<?php the_sub_field('highlight_link'); ?>">
+        		<a  href="<?php echo $link; ?>">
+	                <button>
+	                	
 	                  <?php the_sub_field('highlight_text'); ?>
 	                </button>
+	                </a>
                 </div>
             <?php endwhile;
         else :

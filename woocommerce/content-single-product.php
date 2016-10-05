@@ -51,7 +51,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<p>
 				<?php the_field('learning_outcomes_description'); ?>
 			</p>
-			<div class="wrapper">
+		<div class="wrapper">
+			<div class="wraps">
 				<?php
 				if( have_rows('learning_outcomes') ):
 				    while ( have_rows('learning_outcomes') ) : the_row(); ?>
@@ -75,7 +76,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 				endif;
 				?>
 			</div>
-	</div>  
+		</div> 
+	</div> 
 </article>
 <?php } ?>
 <?php
@@ -99,11 +101,14 @@ echo do_shortcode ('[course_type]');
 
 	<div class="wrap">
 
-	   <?php if( $campuses ): ?>
+
 
 		<div class="rows">	
 		<h2>Upcoming dates for: </h2> 				
 			<select class="campus-toggle" data-target=".courses">
+	   		<?php  if( !$campuses ): ?>
+				<option disabled selected value> none scheduled </option>
+			<?php  endif; ?>
 				<?php foreach( $campuses as $campus ):
 					$lowerCamp = strtolower($campus); ?>
 						<option value="<?php echo $campus; ?>" data-show=".<?php echo $lowerCamp; ?>" data-update=".update-campus"><?php echo $campus; ?></option>
@@ -111,7 +116,6 @@ echo do_shortcode ('[course_type]');
 			</select>
 		</div>
 
-		<?php endif; ?>
 
 
 	   <?php if( $campuses ): ?>
@@ -181,8 +185,8 @@ echo do_shortcode ('[course_type]');
 
 			<?php else : ?>
 
-				<div class="signup">
-					<h5 class="collapse">Stay Connected With Us</h5>
+				<div class="signup small-centered medium-centered">
+					<h5>No courses scheduled - please contact us to request one!</h5>
 					<div>
 						<?php echo do_shortcode('[contact-form-7 id="258" title="Course Updates"]') ?>
 					</div>
@@ -196,8 +200,8 @@ echo do_shortcode ('[course_type]');
 
 		</div>
 		<?php else: ?>
-				<div class="signup">
-					<h5 class="collapse">Stay Connected With Us</h5>
+				<div class="signup small-centered medium-centered">
+					<h5>There's no courses scheduled for this topic right now - sign up and hear when there are!</h5>
 					<div>
 						<?php echo do_shortcode('[contact-form-7 id="258" title="Course Updates"]') ?>
 					</div>

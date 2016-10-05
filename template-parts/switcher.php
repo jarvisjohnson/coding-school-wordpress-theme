@@ -1,5 +1,5 @@
 <!--switcher-->
-   <?php if ( is_shop() || is_product_tag() ) { ?>
+   <?php if ( is_shop() ) { ?>
       <div class="switcher">
           <div class="switch">
               <a id="online-courses" class="active">
@@ -9,7 +9,15 @@
                   <span>On Campus<span class="hide-for-small-only"> Courses</span></span>
              </a>             
           </div>                 
-      </div>        
+      </div>    
+    <?php } elseif ( is_product_tag() ) { ?>  
+      <div class="switcher">
+          <div class="switch">
+              <a rel='m_PageScroll2id' href="#page" id="all-courses" class="active">
+                  <span><?php single_tag_title(); ?><span class="hide-for-small-only"> Courses</span></span>
+             </a>           
+          </div>                 
+      </div>                
     <?php } elseif ( is_product() ) { ?>   
 
               <?php while ( have_posts() ) : the_post(); 

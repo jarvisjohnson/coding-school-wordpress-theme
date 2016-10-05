@@ -52,7 +52,9 @@
 .fa{
   font-size: 2rem;
 }
-
+icon[aria-expanded="true"] .fa-bars:before {
+   content: "\f00d";
+}
 /* Mobile menu */
 
 .off-canvas.position-left {
