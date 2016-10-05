@@ -1,4 +1,8 @@
 //Element Modifiers
+a{
+  font-family: lato, sans-serif;
+  font-size: 1em;
+}
 article{
 	padding: 100px 0;
 	@include breakpoint(small down) { 
@@ -73,7 +77,7 @@ form{
       }
 
 }
-.woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button{
+.woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button, .wpcf7-submit{
   @include button();
   background-color:$main-blue!important;
 }

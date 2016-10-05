@@ -33,11 +33,15 @@ get_header(); ?>
         		$highlight = get_sub_field('highlight_link'); 
         		$link =  get_term_link( $highlight ); ?>
         		<div class="highlight">
-        		<a  href="<?php echo $link; ?>">
-	                <button>
-	                	
-	                  <?php the_sub_field('highlight_text'); ?>
-	                </button>
+        			<a  href="<?php echo $link; ?>">
+						 <?php if ( is_product() && get_field('header_image') )  {
+						  $image = get_field('header_image'); 
+						  } else {
+						  $image = get_field('courses_header_image', 17); 
+						  } ?>
+		                <button style="background-image: url('<?php echo $image ?>')">
+		                  <strong style="color: white;"><?php the_sub_field('highlight_text'); ?></strong>
+		                </button>
 	                </a>
                 </div>
             <?php endwhile;
@@ -52,11 +56,11 @@ get_header(); ?>
 	<div class="wrap">
 		<div class="item-wrap">
 			<header>
-				<div class="icon text-left">
+				<div class="icon text-center">
 					<i class="fa fa-calendar-o"></i>
 				</div>
 				<div class="upcoming text-left">
-					Upcoming Courses
+					<h5>Upcoming Courses</h5>
 				</div> 
 			</header>
 			<?php echo do_shortcode('[featured_products per_page="6"]');?>
@@ -82,7 +86,7 @@ get_header(); ?>
         		$link =  get_term_link( $skill );
         		$name = $skill->slug; ?>
         		<a class="button" href="<?php echo $link; ?>">
-	                  Check out <?php echo $name; ?> courses
+	                  Check out <strong style="color: white;"><?php echo $name; ?></strong> courses
 	            </a>            
             </div>
         <?php endwhile;

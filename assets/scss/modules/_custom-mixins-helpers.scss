@@ -39,6 +39,16 @@ $transition: all .3s ease-in-out;
   }
 }
 
+input {
+  font-family: Droid Sans Mono, monospace!important;
+}
+input[type="submit"]{
+  font-family: Source Sans Pro, sans-serif !important;
+}
+
+aside.sidebar{
+  width:100%;
+}
 
 table{
   table-layout: fixed;

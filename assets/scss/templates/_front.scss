@@ -27,6 +27,8 @@ body.home, .home .off-canvas-content {
 			background: $white;
 			overflow: hidden;
 			@include foundation-forms();
+			width:calc(100% - 1.25rem);
+			margin: 0 .675rem;
 			h5{
 			margin-left: -0.9375rem;
  	          margin-right: -0.9375rem;
@@ -184,13 +186,20 @@ body.home, .home .off-canvas-content {
 			margin-top:80%;
 		}
 		button {
-			@include button-light();
+			@include button();
 			@include radius();
-			@include shadow();			
+			@include shadow();	
+			border: $border;		
 		    position: absolute;
+			background-size: 800%;
+    		background-position: center center;		    
 		    top: 0;
 		    left: .625rem;
 		    right: 0;
+		    transition: $transition;
+		    &:hover,&:active{
+		    	background-size: 500%;
+		    }
 		}
 		// padding: 0 !important;
 
@@ -202,7 +211,7 @@ body.home, .home .off-canvas-content {
 			font-size: 1.75rem;
 		}
 
-		p { font-size: 0.9375rem; }
+		p { font-size: 1.2rem; }
 
 	}
 
@@ -219,12 +228,13 @@ body.home, .home .off-canvas-content {
 	background: $lightest-blue;
 	.wrap{
 		@include grid-row();
-		max-width: 60rem;
+		max-width: 50rem;
 		.item-wrap{
 			// @include grid-column(12);
 			background-color: $white;
 			@include radius();
 			@include shadow();
+			margin: 0 1rem;
 			border: $border;
 			header, .product {
 				@include grid-column(12);
@@ -245,16 +255,27 @@ body.home, .home .off-canvas-content {
 				}
 				@include breakpoint(medium){
 					@include grid-column(2);
+
 				}
 				color: $main-blue;
 			}
+			.upcoming{
+				@include breakpoint(small down){
+					@include grid-column(8);
+					margin-top: 10px;
+				}
+				@include breakpoint(medium){
+					@include grid-column(10);
+				}
+				color: $main-blue;
+			}			
 			.content{
 				@include breakpoint(small down){
 					@include grid-column(8);
 					margin-top: 15px;
 				}
 				@include breakpoint(medium){
-					@include grid-column(8);
+					@include grid-column(7);
 				}
 			}
 			.right{
@@ -263,7 +284,7 @@ body.home, .home .off-canvas-content {
 					margin-top: 15px;
 				}
 				@include breakpoint(medium){
-					@include grid-column(2);
+					@include grid-column(3);
 				}
 				a.button{
 					margin-bottom: 15px;
@@ -347,7 +368,7 @@ body.home, .home .off-canvas-content {
 			font-size: 1.75rem;
 		}
 
-		p { font-size: 0.9375rem; }
+		p { font-size: 1.2rem; }
 
 	}
 
