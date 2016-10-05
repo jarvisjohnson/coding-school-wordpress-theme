@@ -90,7 +90,9 @@
 
 .switcher.single{
 	.switch{
-		//width: 900px;
+		@include breakpoint(small down){
+			display:none;
+		}
 		a{
 			&:after, &:before{
 				display: none;
@@ -111,8 +113,12 @@
 		vertical-align: top;	
 		@include radius($large-radius);
 		@include shadow();
+		@include breakpoint(small down){
+			width:60%;
+		}
 		a{
 			@include button();
+			width: 100%;
 			background-color: $yellow!important;
 			border: 3px solid darken($yellow, 15%)!important;
 			// @include shadow();
@@ -187,21 +193,37 @@
 
 .products{
 	@include grid-row();
-	.product-wrap{
-		@include breakpoint(small) {
+	.product{
+		@include breakpoint(small down) {
 			@include grid-column(12);
+			margin-bottom: 15px;
 		}
 		@include breakpoint(medium) {
 			@include grid-column(6);
 		}
-		.product{
+		@include padding-top-bottom();
+		.product-new{
 			border: $border;
 			@include padding-top-bottom();
 			@include grid-row();
 			@include radius();
 			@include shadow();
-			background: $white;			
-			.title, .part, .skills, .short{
+			background: $white;
+			.title{
+				@include grid-row();
+				@include padding-top-bottom();
+				border-bottom: $border;
+				.image{
+					@include grid-column(2);
+					.attachment-shop_thumbnail{
+						height: 50px;
+					}
+				}
+				.full-title{
+					@include grid-column(10);
+				}
+			}			
+			.details, .skills, .short{
 				@include grid-column(12);
 				@include padding-top-bottom();
 				border-bottom: $border;
@@ -223,6 +245,9 @@
 						@include button-arrow();
 						margin-bottom: 7px;					
 					}	
+					@include breakpoint(small down) {
+						margin-top: 15px;
+					}					
 				}			
 				.left, .right{
 					@include breakpoint(small) {
@@ -276,7 +301,7 @@
 	@include button-arrow();
 	background-color: $main-blue!important;
 	color: $white!important;
-	border: 0!important;
+	// border: 0!important;
 	&:hover{
   		background: $button-background-hover!important,
 	} 
@@ -287,6 +312,9 @@
 .single-product{
 	article .wrap, .product.first{
 		@include grid-row();
+		>p{
+			@include grid-column(12);
+		}
 	}
 	article:nth-of-type(2n-1){
 		background: $white;
@@ -344,9 +372,12 @@
 		.benefit{
 			@include padding-top-bottom();
 			@include breakpoint(small){
-				@include grid-column(10);
+				@include grid-column(12);
 				float: none !important;
 			}
+			@include breakpoint(medium){
+				@include grid-column(10);
+			}			
 			.inner-wrap{
 				@include padding-top-bottom();
 				@include grid-row();
@@ -364,6 +395,25 @@
 	}
 }
 
+#faqs .benefit .details p{
+	margin-left: 1.25rem;
+}
+
+#description{
+	.content{
+		text-align: left;
+			@include breakpoint(small){
+				@include grid-column(12);
+			}
+			@include breakpoint(medium){
+				@include grid-column(10);
+			}
+	}
+	h2{
+		@include grid-column(12);
+	}
+}
+
 #details{
 	text-align: center;
 	.rows{
@@ -372,10 +422,19 @@
 			display: inline-block
 		}
 		select{
-			@include grid-column(2);
+			@include breakpoint(small){
+				@include grid-column(10);
+				float: none !important;
+			}
+			@include breakpoint(medium){
+				@include grid-column(2);
+			}	
 			float: none!important;
 			vertical-align: top;
 			background-position: right 0rem center;
+		}
+			@include breakpoint(small down){
+			margin-bottom: 30px;
 		}
 	}
 	.courses .campus {
@@ -383,6 +442,11 @@
 		&:not(:first-child){
 			margin-top: 20px;
 		}
+		@include breakpoint(small down){
+				width:calc(100% - 1.25rem);
+				margin: 0 auto;
+				float: none!important;
+			}
 		.extra-wrap, .header{
 			background: $white;
 			@include padding-top-bottom();

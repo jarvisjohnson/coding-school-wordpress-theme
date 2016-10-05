@@ -9,7 +9,7 @@ get_header(); ?>
 
 	<!-- Image Header -->
 
-	 <?php if ( is_product() )  {
+	 <?php if ( is_product() && get_field('header_image') )  {
 	  $image = get_field('header_image'); 
 	  } else {
 	  $image = get_field('courses_header_image', 17); 

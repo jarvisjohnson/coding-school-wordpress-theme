@@ -5,6 +5,11 @@ article{
 		padding: 50px 0;
 	}
 }
+#page article{
+    &:first-child{
+    padding-top: 50px;
+  }
+}
 
 button{
   @include radius();

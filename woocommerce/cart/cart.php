@@ -34,6 +34,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 			<th class="product-remove">&nbsp;</th>
 			<th class="product-thumbnail">&nbsp;</th>
 			<th class="product-name"><?php _e( 'Product', 'woocommerce' ); ?></th>
+			<th></th>
 			<th class="product-price"><?php _e( 'Price', 'woocommerce' ); ?></th>
 			<th class="product-campus" style="display: none;">Desired Campus?</th>
 			<th class="product-quantity" style="display: none;"><?php _e( 'Quantity', 'woocommerce' ); ?></th>
@@ -94,6 +95,8 @@ do_action( 'woocommerce_before_cart' ); ?>
 							}
 						?>
 					</td>
+
+					<td></td>
 
 					<td class="product-price" data-title="<?php _e( 'Price', 'woocommerce' ); ?>">
 						<?php

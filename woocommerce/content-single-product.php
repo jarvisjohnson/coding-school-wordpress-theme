@@ -87,7 +87,7 @@ echo do_shortcode ('[course_type]');
 <article id="description" class="text-center">
 	<div class="wrap">
 		<h2>Syllabus</h2>	
-		<div class="content">
+		<div class="content small-centered medium-centered">
 			<?php the_content(); ?>
 		</div>
 	</div>

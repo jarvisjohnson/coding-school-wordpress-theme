@@ -32,6 +32,14 @@ $transition: all .3s ease-in-out;
   display: none!important;
 }
 
+.yith-ywraq-add-to-quote{
+  display: inline-block;
+  a{
+    border: 1px solid transparent;
+  }
+}
+
+
 table{
   table-layout: fixed;
 }
@@ -44,8 +52,8 @@ table{
 
 @mixin padding-top-bottom(){
      @include breakpoint(small) {
-      padding-top: 5px; 
-      padding-bottom: 5px;
+      padding-top: 12px; 
+      padding-bottom: 12px;
    }
    @include breakpoint(medium) {
       padding-top: 10px; 

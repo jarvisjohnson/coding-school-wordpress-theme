@@ -28,8 +28,8 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 }
 ?>
 <?php if (!(is_front_page())){ ?>
-<div class="product-wrap">
-	<div <?php post_class(); ?> >
+<div <?php post_class(); ?> >
+	<div class="product-new">
 		<?php
 		/**
 		 * woocommerce_before_shop_loop_item hook.
@@ -49,26 +49,28 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 		?>
 	<!-- Customisation -->
 		<div class="title">
-			<span class="icon"><img src="<?php the_field('course_icon') ?>"></span>
-			<a href="<?php the_permalink(); ?>"><h3>
-				<?php	
-				/**
-				 * woocommerce_shop_loop_item_title hook.
-				 *
-				 * @hooked woocommerce_template_loop_product_title - 10
-				 */
-				do_action( 'swish_woocommerce_shop_loop_item_title' );		
-				/**
-				 * woocommerce_after_shop_loop_item_title hook.
-				 *
-				 * @hooked woocommerce_template_loop_rating - 5
-				 * @hooked woocommerce_template_loop_price - 10
-				 */
-				// do_action( 'woocommerce_after_shop_loop_item_title' );
-
-
-				?>
-			</h3></a>
+			<div class="image">
+				<span class="icon"><?php echo $product->get_image($size = 'shop_thumbnail' ); ?></span>
+			</div>
+			<div class="full-title text-left">
+				<a href="<?php the_permalink(); ?>"><h3>
+					<?php	
+					/**
+					 * woocommerce_shop_loop_item_title hook.
+					 *
+					 * @hooked woocommerce_template_loop_product_title - 10
+					 */
+					do_action( 'swish_woocommerce_shop_loop_item_title' );		
+					/**
+					 * woocommerce_after_shop_loop_item_title hook.
+					 *
+					 * @hooked woocommerce_template_loop_rating - 5
+					 * @hooked woocommerce_template_loop_price - 10
+					 */
+					// do_action( 'woocommerce_after_shop_loop_item_title' );
+					?>
+				</h3></a>
+			</div>
 		</div>	
 		<div class="details">
 				<span class="part">
@@ -86,7 +88,6 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 		  </div>
 		<div class="short">
 			<?php echo apply_filters( 'woocommerce_short_description', $post->post_excerpt ); ?>
-			<h1><?php the_field('about_heading');?>
 		</div>
 		<div class="skills-buy">
 			<div class="left text-left">
