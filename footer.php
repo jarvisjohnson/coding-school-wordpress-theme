@@ -59,7 +59,7 @@
 
 <?php wp_footer(); ?>
 <?php do_action( 'foundationpress_before_closing_body' ); ?>
-<?php if ( is_front_page() ) { ?>
+<?php if ( is_front_page()  ) { ?>
 	<script>
 	jQuery(document).ready(function($) {
 
@@ -71,9 +71,22 @@
 
 	});
 	</script>	
-<?php }; ?>
+<?php } elseif ( is_page() ) { ?>
+	<script>
+	jQuery(document).ready(function($) {
+
+	    //Slick Slider
+	    $('.slidez').slick({
+	        autoplay: true,
+	        arrows: false, //Set these to whatever you need
+	    });
+
+	});
+	</script>	
+<?php } else {}; ?>
   <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0sUqymNDz0cX3iNniU1LziNjBcVaFuRU">
     </script>
+}
 </body>
 </html>

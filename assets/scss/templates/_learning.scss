@@ -1,0 +1,68 @@
+// Testimonial/Video
+#us-different {
+	background: $lightest-blue;
+	color: $white;
+	.leaver {
+		@include grid-row();
+
+		.slidez,
+		.video {
+
+			@include breakpoint(small) {
+				@include grid-column(12);
+			}
+
+			@include breakpoint(medium) {
+				@include grid-column(6);
+			}
+
+		}
+
+		.slidez{
+		
+			background-repeat: no-repeat;
+	    	background-size: 20%;
+	    	background-position: 5% 0;
+	    	padding-right: 8.33333%;
+	    	@include breakpoint(medium) {
+	    		border-right: 1px solid #cacaca; 
+			}
+
+			.slide{
+				padding: ($global-padding*5) 0 ($global-padding) ($global-padding*6);
+		    	@include breakpoint(small down) {
+		    		padding: ($global-padding*5) 0 ($global-padding) ($global-padding);
+				}
+				blockquote{
+					@include blockquote();
+				}
+
+			}
+
+	    }
+
+		.video {
+
+			@include breakpoint(medium) {
+				@include grid-column(5);
+				@include grid-column-offset(1);
+			}
+		}
+
+	}
+
+
+}
+
+.flex-video.widescreen {
+    @include radius($mass-radius);
+    border: 30px $light-gray solid;
+    background: $light-gray;
+    iframe{
+    	@include radius($mass-radius);
+    }
+}
+
+.not-first-slide{
+	display: none;
+}

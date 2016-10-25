@@ -17,7 +17,18 @@
                   <span><?php single_tag_title(); ?><span class="hide-for-small-only"> Courses</span></span>
              </a>           
           </div>                 
-      </div>                
+      </div>
+    <?php } elseif ( is_page() ) { ?>  
+      <div class="switcher single">
+          <div class="switch">
+              <a href="#you-learn"  id="" class="ps2id">
+                  <span><?php single_tag_title(); ?><span class="hide-for-small-only"> What you'll learn</span></span>
+             </a> 
+              <a href="#us-different"  id="" class="ps2id">
+                  <span><?php single_tag_title(); ?><span class="hide-for-small-only"> What sets SVCS apart</span></span>
+             </a>                        
+          </div>                 
+      </div>                           
     <?php } elseif ( is_product() ) { ?>   
 
               <?php while ( have_posts() ) : the_post(); 
