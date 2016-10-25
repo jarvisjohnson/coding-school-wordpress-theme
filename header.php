@@ -15,6 +15,14 @@
 		<meta charset="<?php bloginfo( 'charset' ); ?>" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<?php wp_head(); ?>
+<style>
+form div.wpcf7-response-output {
+    margin: 1em 0.5em 1em!important;
+}
+#rqa_text_field_row, #rqa_text_field_row_2 {
+    display: block;
+}
+</style>
 	</head>
 	<body <?php body_class(); ?>>
 	<?php do_action( 'foundationpress_after_body' ); ?>

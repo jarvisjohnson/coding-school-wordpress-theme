@@ -43,7 +43,7 @@
 	.switch{
 		@include grid-row();
 		@include breakpoint(small) {
-			//width: calc(100% - 1.25rem);
+			//width: calc(100% - 1.35rem);
 			// margin-left: 0.625rem;
    //  		margin-right: 0.625rem;
 		}
@@ -254,15 +254,17 @@
 						@include grid-column(12);
 					}
 					@include breakpoint(medium) {
-						@include grid-column(8);
+						@include grid-column(7);
 					}
+				}
 				.right{
 					@include breakpoint(small) {
 						@include grid-column(12);
 					}
 					@include breakpoint(medium) {
-						@include grid-column(8);
-					}					
+						@include grid-column(5);
+					}
+				}				
 				img{
 				  	width: 50px !important;
     				height: 50px !important;
@@ -349,7 +351,7 @@
 			@include shadow();
 			overflow: hidden;
 			@include breakpoint(small down){
-				width:calc(100% - 1.25rem);
+				width:calc(100% - 1.35rem);
 				margin: 0 auto;
 			}			
 		}
@@ -479,7 +481,7 @@
 			margin-top: 20px;
 		}
 		@include breakpoint(small down){
-				width:calc(100% - 1.25rem);
+				width:calc(100% - 1.35rem);
 				margin: 0 auto;
 				float: none!important;
 			}

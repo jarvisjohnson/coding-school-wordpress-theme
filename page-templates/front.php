@@ -31,11 +31,12 @@ get_header(); ?>
         if( have_rows('highlights') ):
             while ( have_rows('highlights') ) : the_row(); 
         		$highlight = get_sub_field('highlight_link'); 
-        		$link =  get_term_link( $highlight ); ?>
+        		$link =  get_permalink( $highlight ); 
+        		$id = $highlight->ID; ?>
         		<div class="highlight">
-        			<a  href="<?php echo $link; ?>">
-						 <?php if ( is_product() && get_field('header_image') )  {
-						  $image = get_field('header_image'); 
+        			<a href="<?php echo $link; ?>">
+						 <?php if (get_field('header_image' , $id) )  {
+						  $image = get_field('header_image' , $id ); 
 						  } else {
 						  $image = get_field('courses_header_image', 17); 
 						  } ?>
