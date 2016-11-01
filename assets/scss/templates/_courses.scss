@@ -97,13 +97,12 @@
 			&:after, &:before{
 				display: none;
 			}
-			&:focus{
-				//box-shadow: none!important;
-				//background: $white;
-			}
 			&.active{
 				color:$white;
 				background: initial;
+				&:focus{
+				background: initial;
+				}
 			}
 		}
 	}

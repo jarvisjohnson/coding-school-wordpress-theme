@@ -21,11 +21,11 @@
     <?php } elseif ( is_page() ) { ?>  
       <div class="switcher single">
           <div class="switch">
-              <a href="#you-learn"  id="" class="ps2id">
-                  <span><?php single_tag_title(); ?><span class="hide-for-small-only"> What you'll learn</span></span>
+              <a href="#learn" rel="m_PageScroll2id"   id="learn-link" class="active">
+                  <span>What you'll learn</span>
              </a> 
-              <a href="#us-different"  id="" class="ps2id">
-                  <span><?php single_tag_title(); ?><span class="hide-for-small-only"> What sets SVCS apart</span></span>
+              <a href="#different" rel="m_PageScroll2id"   id="different-link">
+                  <span>What sets SVCS apart</span>
              </a>                        
           </div>                 
       </div>                           

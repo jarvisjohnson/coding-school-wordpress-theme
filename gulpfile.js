@@ -34,7 +34,7 @@ var PATHS = {
     'assets/components/fontawesome/scss',
   ],
   javascript: [
-    'assets/components/what-input/what-input.js',
+    // 'assets/components/what-input/what-input.js',
     'assets/components/foundation-sites/js/foundation.core.js',
     'assets/components/foundation-sites/js/foundation.util.*.js',
 
@@ -171,15 +171,15 @@ gulp.task('copy', function() {
     .pipe(gulp.dest('assets/javascript/vendor/motion-ui'));
 
   // What Input
-  var whatInput = gulp.src('assets/components/what-input/**/*.*')
-      .pipe($.flatten())
-      .pipe(gulp.dest('assets/javascript/vendor/what-input'));
+ // var whatInput = gulp.src('assets/components/what-input/**/*.*')
+   //   .pipe($.flatten())
+     // .pipe(gulp.dest('assets/javascript/vendor/what-input'));
 
   // Font Awesome
   var fontAwesome = gulp.src('assets/components/fontawesome/fonts/**/*.*')
       .pipe(gulp.dest('assets/fonts'));
 
-  return merge(motionUi, whatInput, fontAwesome);
+  return merge(motionUi, fontAwesome);
 });
 
 // Package task

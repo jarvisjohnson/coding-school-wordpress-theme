@@ -4,7 +4,7 @@
 		$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
 		$image = $image[0];
 	else :
-		$image = get_field('courses_header_image', 17);
+		$image = get_field('courses_header_image', 'option');
 	endif; ?>
 
 	<header id="featured-hero" role="banner" style="background-image: url('<?php echo $image ?>')">

@@ -38,7 +38,7 @@ get_header(); ?>
 						 <?php if (get_field('header_image' , $id) )  {
 						  $image = get_field('header_image' , $id ); 
 						  } else {
-						  $image = get_field('courses_header_image', 17); 
+						  $image = get_field('courses_header_image', 'option'); 
 						  } ?>
 		                <button style="background-image: url('<?php echo $image ?>')">
 		                  <strong style="color: white;"><?php the_sub_field('highlight_text'); ?></strong>

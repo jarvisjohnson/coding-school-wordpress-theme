@@ -79,14 +79,21 @@
 	    $('.slidez').slick({
 	        autoplay: true,
 	        arrows: false, //Set these to whatever you need
+	        asNavFor: '.sliderz'
 	    });
 
+	    //Slick Slider
+	    $('.sliderz').slick({
+	        arrows: false, 
+					asNavFor: '.slidez',
+					fade: true,
+					cssEase: 'linear'	        
+	    });	    
+
 	});
-	</script>	
+	</script>
 <?php } else {}; ?>
-  <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0sUqymNDz0cX3iNniU1LziNjBcVaFuRU">
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA0sUqymNDz0cX3iNniU1LziNjBcVaFuRU">
     </script>
-}
 </body>
 </html>

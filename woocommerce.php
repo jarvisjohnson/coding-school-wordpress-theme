@@ -12,7 +12,7 @@ get_header(); ?>
 	 <?php if ( is_product() && get_field('header_image') )  {
 	  $image = get_field('header_image'); 
 	  } else {
-	  $image = get_field('courses_header_image', 17); 
+	  $image = get_field('courses_header_image', 'option'); 
 	  } ?>
 
     <header id="featured-hero" role="banner" style="background-image: url('<?php echo $image ?>')">
