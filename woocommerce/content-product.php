@@ -74,12 +74,12 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 		</div>	
 		<div class="details">
 				<span class="part">
-					<strong>Date</strong>
-					<span> <?php the_field('video_presenter_title'); ?>Text</span>
+					<strong>Days</strong>
+					<span> <?php the_field('days_of_week'); ?></span>
 				</span>	
 				<span class="part text-center">
 					<strong>Duration</strong>
-					<span> <?php the_field('video_presenter_title'); ?>Text</span>
+					<span> <?php the_field('course_duration'); ?> Weeks</span>
 				</span>	
 				<span class="part text-right">
 					<strong>Cost</strong>

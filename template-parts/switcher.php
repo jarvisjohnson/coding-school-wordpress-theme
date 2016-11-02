@@ -18,7 +18,7 @@
              </a>           
           </div>                 
       </div>
-    <?php } elseif ( is_page() ) { ?>  
+    <?php } elseif ( is_page_template( 'page-templates/page-learning.php' ) ) { ?>  
       <div class="switcher single">
           <div class="switch">
               <a href="#learn" rel="m_PageScroll2id"   id="learn-link" class="active">

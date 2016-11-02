@@ -93,11 +93,15 @@ icon[aria-expanded="true"] .fa-bars:before {
     }    
   }
   button{
-    @include shadow();
+    //@include shadow();
     @include button();
+    box-shadow: none!important;
     // @include radius($small-radius);
     &:hover{
       background-color: $dark-blue;
+    }
+    &:focus{
+      box-shadow: none!important;
     }
   }
   .upper{

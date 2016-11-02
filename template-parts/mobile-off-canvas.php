@@ -10,7 +10,7 @@
 
 <nav class="off-canvas position-left" id="mobile-menu" data-off-canvas data-position="left" role="navigation">
 	<div class="upper">
-		<form action="<?php echo get_permalink( get_option('woocommerce_myaccount_page_id') ); ?>">
+		<form action="<?php echo get_page_link( '424' ); ?>">
 			<button type="submit">
 			Free Online Course
 			</button>
